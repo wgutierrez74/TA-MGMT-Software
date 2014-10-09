@@ -18,7 +18,7 @@ exports.signup = function(req, res) {
 
 	// Init Variables
 console.log(req.body);
-	
+
 	var user = new User(req.body);
 	var message = null;
 
@@ -29,6 +29,7 @@ console.log(req.body);
 	// Then save the user 
 	user.save(function(err) {
 		if (err) {
+			console.log('save error');
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
@@ -39,6 +40,7 @@ console.log(req.body);
 
 			req.login(user, function(err) {
 				if (err) {
+					console.log('login error');
 					res.status(400).send(err);
 				} else {
 					res.jsonp(user);
