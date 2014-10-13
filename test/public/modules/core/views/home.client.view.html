@@ -119,11 +119,11 @@
     <div class="container">
 
       <div class="starter-template">
-        <!h1>TA Management Software</h1>
+        <h1>TA Management Software</h1>
         <p class="lead">This software is to help Prospective CISE TAs choose the classes they would like to TA for.<br> Register here at the bottom to begin the process that will connect you and your professor.</p>
             <div ng-controller="ModalDemoCtrl">
             	<script type="text/ng-template" id="myModalContent.html">
-                	<div class="modal-header"><h3 class="modal-title">Register!</h3>
+              <div class="modal-header"><h3 class="modal-title">Register!</h3>
                     </div>
                   <div class="modal-body">
 						<section class="row" data-ng-controller="AuthenticationController">
@@ -158,6 +158,7 @@
                           <h3 class="modal-title">Sign In!</h3>
                       </div>
                       <div class="modal-body">
+                      <section class="row" data-ng-controller="AuthenticationController">
                           <form data-ng-submit="signin()" class="signin form-horizontal" autocomplete="off">
                       <fieldset>
                         <div class="form-group">
@@ -170,7 +171,7 @@
                         </div>
                         <div class="modal-footer">
                           <div class="text-center form-group">
-                            <button type="submit" class="btn btn-primary">Sign in</button>&nbsp; or&nbsp;
+                            <button type="submit" ng-click="ok()" class="btn btn-primary">Sign in </button>&nbsp; or&nbsp;
                             <a href="/#!/signup">Sign up</a>
                           </div>
                           <div class "forgot-password">
@@ -182,6 +183,7 @@
                         </div>
                       </fieldset>
                       </form>
+                      </section>
                       </div>
                       <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
                   </script> 
