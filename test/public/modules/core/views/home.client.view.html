@@ -30,7 +30,7 @@
         <h1>TA Management Software</h1>
         <p>This is a system for Prospective TAs and Faculty which allows students who would like to be TAs to apply for the classes they would most like to TA.  It also allows Faculty to reccomend students, and hopefully find a perfect fit for both parties.</p>
 
-        <div ng-controller="ModalDemoCtrl">
+        <!--div ng-controller="ModalDemoCtrl">
               <script type="text/ng-template" id="myModalContent.html">
                   <div class="modal-header"><h3 class="modal-title">Register!</h3>
                     </div>
@@ -58,10 +58,10 @@
                      </div>
                 </script> 
                 <button class="btn btn-primary btn-lg" ng-click="open('sm')">Register</button>
-                  <!--<div ng-show="selected">Selection from a modal: {{ selected }}</div>-->
-        </div>
+                  <<div ng-show="selected">Selection from a modal: {{ selected }}</div>>
+        </div -->
     
-            <div ng-controller="ModalDemoCtrl2">
+            <!--div ng-controller="ModalDemoCtrl2">
                   <script type="text/ng-template" id="myModalContent2.html">
                       <div class="modal-header">
                           <h3 class="modal-title">Sign In!</h3>
@@ -92,8 +92,8 @@
                   </script> 
 
                   <button class="btn btn-primary btn-lg" ng-click="open('sm')">Sign In</button>
-                  <!--<div ng-show="selected">Selection from a modal: {{ selected }}</div>-->
-              </div>
+                  <!<div ng-show="selected">Selection from a modal: {{ selected }}</div>>
+              </div -->
            
       </div>
     </div>
@@ -124,29 +124,29 @@
             <div ng-controller="ModalDemoCtrl">
             	<script type="text/ng-template" id="myModalContent.html">
                 	<div class="modal-header"><h3 class="modal-title">Register!</h3>
-                  	</div>
-                  	<div class="modal-body">
+                    </div>
+                  <div class="modal-body">
 						<section class="row" data-ng-controller="AuthenticationController">
-                      		<form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
-                      			<fieldset>
-	                        		<div class="form-group">
+              <form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
+              <fieldset>
+	               <div class="form-group">
 										<label for="username">Username</label>
 										<input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
-									</div>
-	                        		<div class="form-group">
+								 </div>
+	               <div class="form-group">
 										<label for="password">Password</label>
 										<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
-									</div>
-	                        		<div class="modal-footer">
-	                          			<div class="text-center form-group">
+								 </div>
+	               <div class="modal-footer">
+	                 <div class="text-center form-group">
 											<button type="submit" ng-click="ok()" class="btn btn-large btn-primary">Sign up</button>
 											<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-										</div>
+									 </div>
 									</div>
-		                    	</fieldset>
-	                        </form>
-            			</section>
-                     </div>
+		            </fieldset>
+	             </form>
+            	</section>
+              </div>
                 </script> 
                 <button class="btn btn-default" ng-click="open('sm')">Register</button>
                   <!--<div ng-show="selected">Selection from a modal: {{ selected }}</div>-->
@@ -158,26 +158,30 @@
                           <h3 class="modal-title">Sign In!</h3>
                       </div>
                       <div class="modal-body">
-                          <form name="form" method="post" action="/signup" novalidate="" class="ng-pristine ng-invalid ng-invalid-required">
-	                          <div class="form-group">
-	                          	<label for="username" class="control-label">Username</label>
-	                          	<input type="text" name="username" id="username" placeholder="Username" unique-username="" required="" ng-model="username" autofocus="" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-is-taken ng-valid-invalid-chars">
-	                          	<i ng-show="busy" class="halflings-icon refresh rotating" style="display: none;"></i>
-	                          	<span ng-show="form.username.$dirty &amp;&amp; form.username.$error.required" class="help-block" style="display: none;">Please choose a username</span>
-	                          	<span ng-show="form.username.$dirty &amp;&amp; form.username.$error.isTaken" class="help-block" style="display: none;">Username already taken</span>
-	                          	<span ng-show="form.username.$dirty &amp;&amp; form.username.$error.invalidChars" class="help-block" style="display: none;">Username may not contain any non-url-safe characters</span></div><div class="form-group">
-	                          	<label for="email" class="control-label">Email</label>
-	                          	<input type="email" ng-model="email" name="email" id="email" placeholder="Email" required="" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-email">
-	                          	<span ng-show="form.email.$dirty &amp;&amp; form.email.$error.email" class="help-block" style="display: none;">Email is invalid</span>
-	                          </div>
-	                          <div class="form-group">
-	                      		<label for="password" class="control-label">Password</label>
-	                      		<input type="password" name="password" id="password" ng-model="password" required="" match="verification" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-match">
-	                      		<span ng-show="form.password.$dirty &amp;&amp; form.password.$error.required" class="help-block" style="display: none;">Please enter a password</span>
-	                          </div>
-	                          <div class="modal-footer">
-	                          	<input type="submit" value="Sign up" ng-click="ok()" ng-disabled="form.$invalid" class="btn btn-primary" disabled="disabled">
-	                        </form>
+                          <form data-ng-submit="signin()" class="signin form-horizontal" autocomplete="off">
+                      <fieldset>
+                        <div class="form-group">
+                          <label for="username">Username</label>
+                          <input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
+                        </div>
+                        <div class="modal-footer">
+                          <div class="text-center form-group">
+                            <button type="submit" class="btn btn-primary">Sign in</button>&nbsp; or&nbsp;
+                            <a href="/#!/signup">Sign up</a>
+                          </div>
+                          <div class "forgot-password">
+                          <a href="/#!/password/forgot">Forgot your password?</a>
+                          </div>
+                          <div data-ng-show="error" class="text-center text-danger">
+                           <strong data-ng-bind="error"></strong>
+                          </div>
+                        </div>
+                      </fieldset>
+                      </form>
                       </div>
                       <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
                   </script> 
