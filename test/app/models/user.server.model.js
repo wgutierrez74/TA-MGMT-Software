@@ -15,6 +15,23 @@ var validateLocalStrategyProperty = function(property) {
 };
 
 /**
+ * A Validation function for local stra'use strict';
+
+/**
+ * Module dependencies.
+ */
+var mongoose = require('mongoose'),
+	Schema = mongoose.Schema,
+	crypto = require('crypto');
+
+/**
+ * A Validation function for local strategy properties
+ */
+var validateLocalStrategyProperty = function(property) {
+	return ((this.provider !== 'local' && !this.updated) || property.length);
+};
+
+/**
  * A Validation function for local strategy password
  */
 var validateLocalStrategyPassword = function(password) {
@@ -28,7 +45,7 @@ var UserSchema = new Schema({
 	firstName: {
 		type: String,
 		trim: true,
-		default: 'FirstName',
+		default: '',
 		//validate: [validateLocalStrategyProperty, 'Please fill in your first name']
 	},
 	lastName: {
@@ -59,6 +76,26 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyPassword, 'Password should be longer']
 	},
+	gpa: {
+		type: Number,
+		default: 0.00,
+		trim: true
+	}, 
+	abilities: {
+		type: String,
+		default: '',
+		trim: true
+	},
+	advisor: {
+		type: String,
+		default: '',
+		trim: true
+	},
+	researchField: {
+		type: String,
+		default: '',
+		trim: true
+	},
 	salt: {
 		type: String
 	},
@@ -88,7 +125,18 @@ var UserSchema = new Schema({
 	},
   	resetPasswordExpires: {
   		type: Date
-  	}
+  	},
+  	active: {
+  		type: Boolean
+  	},
+  	admin: {
+  		type: Boolean,
+  		default: false
+  	},
+    faculty: {
+    	type: Boolean,
+    	default: false
+    }
 });
 
 /**

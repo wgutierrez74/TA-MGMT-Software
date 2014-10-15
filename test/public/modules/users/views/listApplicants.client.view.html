@@ -1,0 +1,20 @@
+<section ng-controller="PopulateController">
+  <table>
+    <thead>
+      <tr><th colspan="4">Applicants</th></tr>
+    </thead>
+    <div ng-contoller = "PopulateController">
+      <p>
+        Yeah buddy. {{tester}}
+      </p>
+    </div>
+    <tbody>
+      <tr ng-repeat="user in applicantList">
+        <td>{{$index + 1}}</td>
+        <td>
+          {{user.firstName}}&nbsp;{{user.lastName}}&nbsp;{{user.gpa}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
