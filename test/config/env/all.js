@@ -2,9 +2,9 @@
 
 module.exports = {
 	app: {
-		title: 'testApp',
-		description: 'vide',
-		keywords: 'MongoDB, Express, AngularJS, Node.js'
+		title: 'MEAN-ALL',
+		description: 'FULL-MDB-EXP-ANG-NOD',
+		keywords: 'MDB,EXP,ANG,NOD'
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',

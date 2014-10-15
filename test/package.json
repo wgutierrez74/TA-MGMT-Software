@@ -1,8 +1,8 @@
 {
-	"name": "testapp",
-	"description": "vide",
+	"name": "mean-all",
+	"description": "FULL-MDB-EXP-ANG-NOD",
 	"version": "0.0.1",
-	"author": "Pat",
+	"author": "WILL",
 	"engines": {
 		"node": "0.10.x",
 		"npm": "1.4.x"
