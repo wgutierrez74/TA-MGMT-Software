@@ -4,7 +4,6 @@ angular.module('users').controller('PopulateController', ['$scope', '$http', '$l
 	function($scope, $http, $location, Authentication) {
     	$scope.authentication = Authentication;
     	$scope.applicantsList = [];
-    	$scope.tester = 'This shit actually works';
     	$http.get('/populate').success(function(data, status, headers, config){
     		$scope.applicantList = data;
     	//khj
