@@ -44,6 +44,10 @@ angular.module('users').config(['$stateProvider',
 		state('adminView', {
 			url: '/adminView' ,
 			templateUrl: 'modules/users/views/listApplicants.client.view.html'
+		}).
+		state('badPermission', {
+			url: '/badPermission' ,
+			templateUrl: 'modules/users/views/badPermission.client.view.html'
 		});
 	}
 ]);

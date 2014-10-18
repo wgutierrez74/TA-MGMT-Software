@@ -12,5 +12,8 @@ angular.module('users').controller('PopulateController', ['$scope', '$http', '$l
     		$scope.error = status;
     	   });
         }
+        else{
+            $location.path('/badPermission');
+        }
 
   }]);
