@@ -136,6 +136,14 @@ var UserSchema = new Schema({
     faculty: {
     	type: Boolean,
     	default: false
+    },
+    verified: {
+    	type: Boolean,
+    	default: false
+    },
+    submitted: {
+    	type: Boolean,
+    	default: false
     }
 });
 
