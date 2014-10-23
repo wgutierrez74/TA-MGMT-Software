@@ -25,6 +25,8 @@ console.log(req.body);
 	// Add missing user fields
 	user.provider = 'local';
 	user.displayName = user.firstName + ' ' + user.lastName;
+	user.student = true;
+	//user.admin = true;
 
 	// Then save the user 
 	user.save(function(err) {
@@ -223,6 +225,6 @@ exports.populate = function(req, res) {
         };
     };
 
-	User.find({admin: false}, 'firstName lastName gpa', twisted(res));
+	User.find({student: true}, 'displayName username gpa', twisted(res));
 	
 };

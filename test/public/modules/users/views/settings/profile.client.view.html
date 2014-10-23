@@ -1,0 +1,42 @@
+<section class="row" data-ng-controller="SubmitController">
+	<h3 class="col-md-12 text-center">Edit your profile</h3>
+	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
+		<form name="userForm" class="signin form-horizontal" autocomplete="off">
+			<fieldset>
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="First Name" readonly>
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Last Name" readonly>
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email" readonly>
+				</div>
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username" readonly>
+				</div>
+				<div class="form-group">
+					<label for="gpa">GPA</label>
+					<input type="text" id="gpa" name="gpa" class="form-control" data-ng-model="user.gpa" placeholder=" Fill in GPA" readonly>
+				</div>
+				<div class="form-group">
+					<label for="firstName">Abilities</label>
+					<input type="text" id="abilities" name="abilities" class="form-control" data-ng-model="user.abilities" placeholder="Fill in abilities" readonly>
+				</div>
+				<div class="form-group">
+					<label for="firstName">Advisor</label>
+					<input type="text" id="advisor" name="advisor" class="form-control" data-ng-model="user.advisor" placeholder="Fill in Advisor" readonly>
+				</div>
+				<div class="form-group">
+					<label for="firstName">Research Field</label>
+					<input type="text" id="researchField" name="researchField" class="form-control" data-ng-model="user.researchField" placeholder="Fill in your research field" readonly>
+				</div>
+				 <button type="submit" ng-click="editProfile();">Edit</button>
+			</fieldset>
+		</form>
+	</div>
+</section>

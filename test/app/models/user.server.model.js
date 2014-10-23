@@ -96,6 +96,26 @@ var UserSchema = new Schema({
 		default: '',
 		trim: true
 	},
+	course1: {
+		type: String,
+		default:'',
+		trim: true
+	},
+	course2: {
+		type: String,
+		default:'',
+		trim: true
+	},
+	course3: {
+		type: String,
+		default:'',
+		trim: true
+	},
+	course4: {
+		type: String,
+		default:'',
+		trim: true
+	},
 	salt: {
 		type: String
 	},
@@ -129,6 +149,10 @@ var UserSchema = new Schema({
   	active: {
   		type: Boolean
   	},
+  	student: {
+  		type: Boolean,
+  		default: false
+  	},
   	admin: {
   		type: Boolean,
   		default: false
@@ -142,6 +166,10 @@ var UserSchema = new Schema({
     	default: false
     },
     submitted: {
+    	type: Boolean,
+    	default: false
+    },
+    SUser: {
     	type: Boolean,
     	default: false
     }

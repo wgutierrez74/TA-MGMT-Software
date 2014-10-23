@@ -5,9 +5,29 @@ angular.module('users').config(['$stateProvider',
 	function($stateProvider) {
 		// Users state routing
 		$stateProvider.
-		state('profile', {
+		state('editProfile', {
 			url: '/settings/profile',
 			templateUrl: 'modules/users/views/settings/edit-profile.client.view.html'
+		}).
+		state('profile', {
+			url: '/settings',
+			templateUrl: 'modules/users/views/settings/profile.client.view.html'
+		}).
+		state('faculty', {
+			url: '/faculty',
+			templateUrl: 'modules/users/views/facultyView.client.view.html'
+		}).
+		state('facultyCreate', {
+			url: '/SUser/createFaculty',
+			templateUrl: 'modules/users/views/settings/facultyCreate.client.view.html'
+		}).
+		state('SUser', {
+			url: '/SUser',
+			templateUrl: 'modules/users/views/SUser.client.view.html'
+		}).
+		state('adminCreate', {
+			url: '/SUser/createAdmin',
+			templateUrl: 'modules/users/views/settings/adminCreate.client.view.html'
 		}).
 		state('password', {
 			url: '/settings/password',
@@ -17,14 +37,7 @@ angular.module('users').config(['$stateProvider',
 			url: '/settings/accounts',
 			templateUrl: 'modules/users/views/settings/social-accounts.client.view.html'
 		}).
-		state('signup', {
-			url: '/signup',
-			templateUrl: 'modules/users/views/authentication/signup.client.view.html'
-		}).
-		state('signin', {
-			url: '/signin',
-			templateUrl: 'modules/users/views/authentication/signin.client.view.html'
-		}).
+		
 		state('forgot', {
 			url: '/password/forgot',
 			templateUrl: 'modules/users/views/password/forgot-password.client.view.html'
@@ -44,6 +57,10 @@ angular.module('users').config(['$stateProvider',
 		state('adminView', {
 			url: '/adminView' ,
 			templateUrl: 'modules/users/views/listApplicants.client.view.html'
+		}).
+		state('adminView-applicant', {
+			url: '/adminView/applicant' ,
+			templateUrl: 'modules/users/views/applicantView.client.view.html'
 		}).
 		state('badPermission', {
 			url: '/badPermission' ,

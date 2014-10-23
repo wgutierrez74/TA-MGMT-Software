@@ -1,0 +1,20 @@
+<section ng-controller="SUserController">
+  <table>
+    <thead>
+      <tr><th colspan="4">Controller</th></tr>
+    </thead>
+      <p>
+        Yeah buddy.
+      </p>
+    <tbody>
+      <tr ng-repeat="user in courseList">
+        <td>{{$index + 1}}</td>
+        <td>
+          {{user.course1}}&nbsp;{{user.course2}}&nbsp;{{user.course3}}&nbsp;{{user.course4}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="submit" ng-click="createFaculty();">Create Faculty Account</button>
+  <button type="submit" ng-click="createAdmin();">Create Admin Account</button>
+</section>

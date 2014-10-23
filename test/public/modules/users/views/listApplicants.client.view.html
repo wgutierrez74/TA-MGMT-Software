@@ -1,18 +1,18 @@
 <section ng-controller="PopulateController">
+  <input type="text" ng-model="nameFilter" placeholder="Search..."/>
   <table>
     <thead>
       <tr><th colspan="4">Applicants</th></tr>
     </thead>
-    <div ng-contoller = "PopulateController">
       <p>
         Yeah buddy.
       </p>
-    </div>
     <tbody>
-      <tr ng-repeat="user in applicantList">
+      <tr ng-repeat="ta in applicantList | filter:nameFilter">
         <td>{{$index + 1}}</td>
-        <td>
-          {{user.firstName}}&nbsp;{{user.lastName}}&nbsp;{{user.gpa}}
+        <td>     
+          <a href ng-click="userInfo(ta.username)">{{ta.displayName}}</a href>
+            {{ta.gpa}}&nbsp;
         </td>
       </tr>
     </tbody>
