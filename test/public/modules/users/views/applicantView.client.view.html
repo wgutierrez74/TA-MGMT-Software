@@ -4,6 +4,7 @@
       <p>
         Yeah buddy. Please be right
         {{ta.displayName}}
+        {{yeah}}
       </p>
       <form name="userForm" class="signin form-horizontal" autocomplete="off">
       <fieldset>
@@ -42,6 +43,6 @@
       </fieldset>
     </form>
   </table>
-    <button type="submit" >Verrify credentials for {{ta.displayName}}</button>
-    <button type="submit">Back</button>
+    <button type="submit" ng-click="verify(ta);" >Verrify credentials for {{ta.displayName}}</button>
+    <button type="submit" ng-click="back();"> Go back</button>
 </section>

@@ -71,11 +71,6 @@ exports.createFaculty = function(req, res){
 
 exports.applicantInfo = function(req, res) {
 	console.log('Brooooooo');
-	
-	console.log(req);
-	console.log(req.body);
-	console.log(req.body.courseN);
-	console.log(req.msg);
 	var name = req.body.courseN;
 		
 	var twisted = function(res){
@@ -94,30 +89,26 @@ exports.applicantInfo = function(req, res) {
 	
 };
 
-exports.capplicantInfo = function(req, res) {
-	console.log('Brooooooo');
+// exports.capplicantInfo = function(req, res) {
+// 	console.log('Brooooooo');
 	
-	console.log(req);
-	console.log(req.body);
-	console.log(req.body.courseN);
-	console.log(req.msg);
-	var name = req.body.courseN;
+// 	var name = req.body.courseN;
 		
-	var twisted = function(res){
-        return function(err, data){
-            if (err){
-                console.log('error occured');
-                return;
-            }
-            //console.log(data);
-            res.jsonp(data);
+// 	var twisted = function(res){
+//         return function(err, data){
+//             if (err){
+//                 console.log('error occured');
+//                 return;
+//             }
+//             //console.log(data);
+//             res.jsonp(data);
            
-         };
-    };
+//          };
+//     };
 
-	 User.findOne({username : name}).exec(twisted(res));
+// 	 User.findOne({username : name}).exec(twisted(res));
 	
-};
+// };
 
 exports.coursePopulate = function(req, res) {
 	console.log('Brooooooo');
@@ -140,12 +131,10 @@ exports.coursePopulate = function(req, res) {
 
 exports.addCourse = function(req, res) {
 	
-	console.log(req.body);
-	console.log(req.body.cName);
-
-
 	var course = req.body.cName;
 	var user = req.user;
+	console.log(req.user);
+	console.log(user);
 	if (user) {
 		
 		if(user.course1 === ''){
@@ -214,5 +203,40 @@ exports.populate = function(req, res) {
     };
 
 	User.find({student: true}, 'displayName username gpa', twisted(res));
+	
+};
+
+exports.verifyUser = function(req, res) {
+	//console.log(req);
+	//console.log(req.body);
+	console.log('----------------------------------');
+
+	//console.log(req.body.);
+	delete req.body.salt;
+	delete req.body.password;
+	User = req.body;
+	console.log(User);
+	if (User) {
+		User.verified = true;
+		User.updated = Date.now();
+		console.log(User);
+
+		User.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				return res.status(200).send({
+					message: 'Verified'
+				});
+			}
+		});
+	} 
+	else{
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
 	
 };

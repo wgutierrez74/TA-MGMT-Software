@@ -19,5 +19,21 @@ angular.module('users').controller('ApplicantController', ['$scope', '$http', '$
             $location.path('/badPermission');
         }
 
+        $scope.back = function(){
+            $location.path('/adminView');
+        };
+
+        $scope.verify = function(ta){
+            var temp = {
+            'uName': '' 
+            };
+            temp.uName = $scope.ta.username;
+            $http.post('/verifyApplicant', ta).success(function(response){
+                $scope.success = response;
+            }).error(function(response){
+                $scope.error = response;
+            });
+        };
+
 
   }]);

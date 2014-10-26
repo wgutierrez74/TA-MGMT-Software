@@ -8,7 +8,7 @@ angular.module('users').controller('CApplicantController', ['$scope', '$http', '
             'courseN': '' 
             };
             t.courseN = myservice.get();
-            $http.post('/capplicant', t).success(function(data, status, headers, config){
+            $http.post('/applicant', t).success(function(data, status, headers, config){
     		  $scope.ta = data;
     	//khj
     	   }).error(function(data, status, headers, config){
