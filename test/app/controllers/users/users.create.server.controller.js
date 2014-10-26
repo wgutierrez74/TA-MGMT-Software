@@ -74,9 +74,9 @@ exports.applicantInfo = function(req, res) {
 	
 	console.log(req);
 	console.log(req.body);
-	console.log(req.body.taName);
+	console.log(req.body.courseN);
 	console.log(req.msg);
-	var name = req.body.taName;
+	var name = req.body.courseN;
 		
 	var twisted = function(res){
         return function(err, data){
@@ -91,5 +91,128 @@ exports.applicantInfo = function(req, res) {
     };
 
 	 User.findOne({username : name}).exec(twisted(res));
+	
+};
+
+exports.capplicantInfo = function(req, res) {
+	console.log('Brooooooo');
+	
+	console.log(req);
+	console.log(req.body);
+	console.log(req.body.courseN);
+	console.log(req.msg);
+	var name = req.body.courseN;
+		
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            //console.log(data);
+            res.jsonp(data);
+           
+         };
+    };
+
+	 User.findOne({username : name}).exec(twisted(res));
+	
+};
+
+exports.coursePopulate = function(req, res) {
+	console.log('Brooooooo');
+	var name = req.body.courseN;
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	User.find({course1: name}, 'displayName username', twisted(res));
+	
+};
+
+exports.addCourse = function(req, res) {
+	
+	console.log(req.body);
+	console.log(req.body.cName);
+
+
+	var course = req.body.cName;
+	var user = req.user;
+	if (user) {
+		
+		if(user.course1 === ''){
+			user.course1 = course;
+		}
+		else{
+			if(user.course2 === ''){
+				user.course2 = course;
+			}
+			else{
+				if(user.course3 === ''){
+					user.course3 = course;
+				}
+				else{
+					if(user.course4 === ''){
+						user.course4 = course;
+					}
+					else{
+						res.status(400).send({
+							message: 'Cannot add course. Too many courses'
+						});
+						return;
+					}
+				}
+			}
+		}
+
+		user.updated = Date.now();
+
+		user.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				req.login(user, function(err) {
+					if (err) {
+						res.status(400).send(err);
+					} else {
+						res.jsonp(user);
+					}
+				});
+			}
+		});
+	} 
+	else{
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
+	
+};
+
+exports.populate = function(req, res) {
+	console.log('Brooooooo');
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	User.find({student: true}, 'displayName username gpa', twisted(res));
 	
 };

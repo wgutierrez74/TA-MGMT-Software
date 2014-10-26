@@ -1,0 +1,24 @@
+<section ng-controller="CourseController">
+  <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+  <!--above line is the code for the sign out header-->
+  <input type="text" ng-model="nameFilter" placeholder="Search..."/>
+  <table>
+    <thead>
+      <tr><th colspan="4"> Applicants</th></tr>
+    </thead>
+      <p>
+        Yeah buddy.
+      </p>
+    <tbody>
+      <tr ng-repeat="app in applicantList | filter:nameFilter">
+        <td>{{$index + 1}}</td>
+        <td>     
+          <a href ng-click="userInfo(app.username)">{{app.displayName}}</a href>
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+        {{}}
+    </tbody>
+  </table>
+</section>
