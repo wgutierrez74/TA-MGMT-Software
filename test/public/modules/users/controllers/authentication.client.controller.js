@@ -65,5 +65,9 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				$scope.error = response.message;
 			});
 		};
+
+		$scope.back = function(){
+			$location.path('/SUser');
+		};
 	}
 ]);

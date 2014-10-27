@@ -85,7 +85,7 @@ exports.applicantInfo = function(req, res) {
          };
     };
 
-	 User.findOne({username : name}).exec(twisted(res));
+	User.findOne({username : name}).exec(twisted(res));
 	
 };
 
@@ -215,6 +215,7 @@ exports.verifyUser = function(req, res) {
 	delete req.body.salt;
 	delete req.body.password;
 	User = req.body;
+	User.roles = [ 'user' ];
 	console.log(User);
 	if (User) {
 		User.verified = true;

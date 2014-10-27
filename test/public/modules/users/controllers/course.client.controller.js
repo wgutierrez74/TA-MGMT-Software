@@ -26,4 +26,8 @@ angular.module('users').controller('CourseController', ['$scope', '$http', '$loc
             $location.path('/faculty/course/applicant');
         };
 
+        $scope.back = function(){
+            $location.path('/faculty');
+        };
+
   }]);

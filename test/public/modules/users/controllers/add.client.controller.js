@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('users').controller('AddController', ['$scope', '$http', '$location', 'Users', 'Authentication',
-	function($scope, $http, $location, Users, Authentication, List) {
+	function($scope, $http, $location, Users, Authentication) {
 		$scope.user = Authentication.user;
-		$scope.list = List;
 
 		// var t = {
   //   		'courseN': '' 

@@ -19,5 +19,9 @@ angular.module('users').controller('CApplicantController', ['$scope', '$http', '
             $location.path('/badPermission');
         }
 
+        $scope.back = function(){
+            $location.path('/faculty/course');
+        };
+
 
   }]);
