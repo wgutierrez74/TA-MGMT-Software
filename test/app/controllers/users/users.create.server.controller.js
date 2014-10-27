@@ -202,27 +202,52 @@ exports.populate = function(req, res) {
         };
     };
 
-	User.find({student: true}, 'displayName username gpa', twisted(res));
+	User.find({verified: false}, 'displayName username gpa', twisted(res));
 	
 };
 
 exports.verifyUser = function(req, res) {
-	//console.log(req);
+	
 	//console.log(req.body);
 	console.log('----------------------------------');
-
+	console.log(req);
 	//console.log(req.body.);
 	delete req.body.salt;
 	delete req.body.password;
-	User = req.body;
-	User.roles = [ 'user' ];
-	console.log(User);
-	if (User) {
-		User.verified = true;
-		User.updated = Date.now();
-		console.log(User);
+	req.user._id = req.body._id;
+	req.user.displayName = req.body.displayName;
+	req.user.provider = req.body.provider;
+	req.user.username = req.body.username;
+	//req.user. = req.body._id;
+	req.user.updated = req.body.updated;
+	//req.user._id = req.body._id;
+	req.user.submitted = req.body.submitted;
+	req.user.verified = req.body.verified;
+	//req.user._id = req.body._id;
+	req.user.admin = req.body.admin;
+	req.user.student = req.body.student;
+	req.user.created = req.body.created;
+	//req.user._id = req.body._id;
+	req.user.course4 = req.body.course4;
+	req.user.course3 = req.body.course3;
+	req.user.course2 = req.body.course2;
+	req.user.course1 = req.body.course1;
+	req.user.researchField = req.body.researchField;
+	req.user.advisor = req.body.advisor;
+	req.user.abilities = req.body.abilities;
+	req.user.gpa = req.body.gpa;
+	req.user.email = req.body.email;
+	req.user.lastName = req.body.lastName;
+	req.user.firstName = req.body.firstName;
+	var user = req.user;
+	//User.roles = [ 'user' ];
+	//console.log(User);
+	if (user) {
+		user.verified = true;
+		user.updated = Date.now();
+		console.log(user);
 
-		User.save(function(err) {
+		user.save(function(err) {
 			if (err) {
 				return res.status(400).send({
 					message: errorHandler.getErrorMessage(err)
