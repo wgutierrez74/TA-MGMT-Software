@@ -23,16 +23,11 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-
-  <body>
-
     <div class="jumbotron">
       <div class="container">
-        <h1><div align="center">TA Management Software</div></h1>
-        <p>This is a system for Prospective TAs and Faculty which allows students who would like to be TAs to apply for the classes they would most like to TA.  It also allows Faculty to recommend students, and hopefully find a perfect fit for both parties.</p>
-        <p>This software is to help Prospective CISE TAs choose the classes they would like to TA for.<br> Register here at the bottom to begin the process that will connect you and your professor.</p>
-        <p>
-          <TABLE BORDER="0">
+        <h1><div align="center"><img src="/modules/users/img/workinglogo.png"></div></h1>
+        <p>TA Hub is a system for prospective teaching assistants and instructors whom are in need of a teaching assistant. Here students can submit their credentials and apply to be considered as a TA for a particular class. Faculty members can then select which students they would like as a potential TA. A perfect fit for both parties is then selected by an administrator and the TA and faculty member are automatically notified.</p>
+          <TABLE BORDER="0" align="right">
           <TR><TD><div ng-controller="ModalDemoCtrl">
             <script type="text/ng-template" id="myModalContent.html">
               <div class="modal-header"><h3 class="modal-title">Register!</h3>
@@ -65,13 +60,13 @@
                 </section>
               </div>
             </script> 
-            <button class="btn btn-default" ng-click="open('sm')">Register</button>
+            <button class="btn btn-large btn-primary" ng-click="open('sm')" style="margin-top: -34px;">Register Now</button>&emsp;
                   <!--<div ng-show="selected">Selection from a modal: {{ selected }}</div>-->
           </div></TD>
           <TD><div ng-controller="ModalDemoCtrl2">
             <script type="text/ng-template" id="myModalContent2.html">
                 <div class="modal-header">
-                    <h3 class="modal-title">Sign In!</h3>
+                    <h3 class="modal-title">Sign In</h3>
                 </div>
                 <div class="modal-body">
                 <section class="row" data-ng-controller="AuthenticationController">
@@ -87,7 +82,7 @@
                   </div>
                   <div class="modal-footer">
                     <div class="text-center form-group">
-                      <button type="submit" ng-click="ok()" class="btn btn-primary" style="">Sign in </button>
+                      <button type="submit" ng-click="ok()" class="btn btn-primary" >Sign in</button>
                        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
                     </div>
                     <!--<div class "forgot-password">
@@ -103,8 +98,8 @@
                 </div>
                
             </script> 
-
-            <button class="btn btn-default" ng-click="open('sm')" style="margin-top: 14px;">Sign In</button>
+ or if you already have an account...
+            <button class="btn btn-large btn-primary" ng-click="open('sm')" style="margin-top: -21px; margin-right:60px;">Sign In</button>
             <!--<div ng-show="selected">Selection from a modal: {{ selected }}</div>-->
           </div></p></TD>
           </TR>
@@ -147,8 +142,5 @@
 
     <script src="../lib/angular/angular.js"></script>
     <script src="../lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="../collapse.controller.js"></script>
-
-  </body>
-  
+    <script src="../collapse.controller.js"></script> 
 </html>

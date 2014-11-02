@@ -26,6 +26,7 @@ console.log(req.body);
 	user.provider = 'local';
 	user.displayName = user.firstName + ' ' + user.lastName;
 	user.student = true;
+	//user.faculty = true;
 	//user.admin = true;
 
 	// Then save the user 

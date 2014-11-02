@@ -1,48 +1,58 @@
 <section ng-controller="ApplicantController">
   <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-  <table>
-      <p>
-        Yeah buddy. Please be right
-        {{ta.displayName}}
-        {{yeah}}
-      </p>
-      <form name="userForm" class="signin form-horizontal" autocomplete="off">
-      <fieldset>
-        <div class="form-group">
-          <label for="firstName">First Name</label>
-          <input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="ta.firstName" placeholder="First Name" readonly>
-        </div>
-        <div class="form-group">
-          <label for="lastName">Last Name</label>
-          <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="ta.lastName" placeholder="Last Name" readonly>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" class="form-control" data-ng-model="ta.email" placeholder="Email" readonly>
-        </div>
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" class="form-control" data-ng-model="ta.username" placeholder="Username" readonly>
-        </div>
-        <div class="form-group">
-          <label for="gpa">GPA</label>
-          <input type="text" id="gpa" name="gpa" class="form-control" data-ng-model="ta.gpa" placeholder=" Fill in GPA" readonly>
-        </div>
-        <div class="form-group">
-          <label for="firstName">Abilities</label>
-          <input type="text" id="abilities" name="abilities" class="form-control" data-ng-model="ta.abilities" placeholder="Fill in abilities" readonly>
-        </div>
-        <div class="form-group">
-          <label for="firstName">Advisor</label>
-          <input type="text" id="advisor" name="advisor" class="form-control" data-ng-model="ta.advisor" placeholder="Fill in Advisor" readonly>
-        </div>
-        <div class="form-group">
-          <label for="firstName">Research Field</label>
-          <input type="text" id="researchField" name="researchField" class="form-control" data-ng-model="ta.researchField" placeholder="Fill in your research field" readonly>
-        </div>
-      </fieldset>
-    </form>
-  </table>
-    <button type="submit" ng-click="verify(ta);" >Verify credentials for {{ta.displayName}}</button>
-    <button type="submit" ng-click="back();"> Go back</button>
+  <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+        <div class="container">
+          <h2><div align="center">Welcome/Title</div></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
+      </div>
+    </div>
+    <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+       <div class="container">
+        <table>
+            <p>
+              Yeah buddy. Please be right
+              {{ta.displayName}}
+              {{yeah}}
+            </p>
+            <form name="userForm" class="signin form-horizontal" autocomplete="off">
+            <fieldset>
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="ta.firstName" placeholder="First Name" readonly>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="ta.lastName" placeholder="Last Name" readonly>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control" data-ng-model="ta.email" placeholder="Email" readonly>
+              </div>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" class="form-control" data-ng-model="ta.username" placeholder="Username" readonly>
+              </div>
+              <div class="form-group">
+                <label for="gpa">GPA</label>
+                <input type="text" id="gpa" name="gpa" class="form-control" data-ng-model="ta.gpa" placeholder=" Fill in GPA" readonly>
+              </div>
+              <div class="form-group">
+                <label for="firstName">Abilities</label>
+                <input type="text" id="abilities" name="abilities" class="form-control" data-ng-model="ta.abilities" placeholder="Fill in abilities" readonly>
+              </div>
+              <div class="form-group">
+                <label for="firstName">Advisor</label>
+                <input type="text" id="advisor" name="advisor" class="form-control" data-ng-model="ta.advisor" placeholder="Fill in Advisor" readonly>
+              </div>
+              <div class="form-group">
+                <label for="firstName">Research Field</label>
+                <input type="text" id="researchField" name="researchField" class="form-control" data-ng-model="ta.researchField" placeholder="Fill in your research field" readonly>
+              </div>
+            </fieldset>
+          </form>
+        </table>
+        <button type="submit" ng-click="verify(ta);" >Verify credentials for {{ta.displayName}}</button>
+        <button type="submit" ng-click="back();"> Go back</button>
+    </DIV>
+  </DIV>
 </section>
