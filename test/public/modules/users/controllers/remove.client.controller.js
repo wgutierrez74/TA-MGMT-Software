@@ -1,11 +1,13 @@
 'use strict';
 
-angular.module('users').controller('FacultyController', ['$scope', '$http', '$location', 'Authentication', 'Users', 'myservice',
-	function($scope, $http, $location, Authentication, Users, myservice) {
+angular.module('users').controller('RemoveController', ['$window','$scope', '$http', '$location', 'Authentication', 'Users', 'myservice',
+	function($window, $scope, $http, $location, Authentication, Users, myservice) {
 		$scope.user = Authentication.user;
 
 		// If user is not signed in then redirect back home
 		if (!$scope.user) $location.path('/');
+
+		$scope.courseSelected = '';
 
 		if($scope.user.course1 === ''){
 			$scope.course1 = '';
@@ -38,22 +40,24 @@ angular.module('users').controller('FacultyController', ['$scope', '$http', '$lo
 			}
 		}
 
-		$scope.courseApplicants = function(course) {
-    		myservice.set(course);
-    		$location.path('/faculty/course');
-		};
-
-		$scope.addCourse = function() {
-			$location.path('/faculty/addCourse');
-		};
-
 		$scope.removeCourse = function() {
-			$location.path('/faculty/removeCourse');
+			$scope.showman = $scope.courseSelected;
+			var t = {
+            'courseN': '' 
+            };
+            t.courseN = $scope.courseSelected;
+			$http.post('/removeCourse', t).success(function(response){
+                $scope.user = response;
+    	    }).error(function(data, status, headers, config){
+    		      $scope.error = status;
+    	    });
+    	    $window.location.reload();
+    	    
+		};
+
+		$scope.goBack = function(){
+			$location.path('/faculty');
 		};
 		
-
-		$scope.userInfo = function() {
-			//$location.path('/settings/profile');
-		};
 	}
 ]);

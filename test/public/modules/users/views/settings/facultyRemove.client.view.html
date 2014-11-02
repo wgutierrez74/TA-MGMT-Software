@@ -1,0 +1,44 @@
+<section ng-controller="RemoveController">
+  <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+  <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+        <div class="container">
+          <h2><div align="center">Welcome/Title</div></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
+      </div>
+    </div>
+    <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+       <div class="container">
+  <table>
+    <thead>
+      <tr><th colspan="4"> Current Courses</th></tr>
+    </thead>
+      <p>
+        {{showman}}
+      </p>
+    <form>
+</form>
+    <tr>
+       <td>
+          <input type="radio" ng-model="courseSelected" value="{{course1}}">{{course1}}<br>
+       </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="radio" ng-model="courseSelected" value="{{course2}}">{{course2}}<br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="radio" ng-model="courseSelected" value="{{course3}}">{{course3}}<br>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="radio" ng-model="courseSelected" value="{{course4}}">{{course4}}<br>
+      </td>
+    </tr>
+  </table>
+    <button type="submit" ng-click="removeCourse();" class="btn btn-large btn-primary">Remove Course</button>
+  </div>
+</div>
+</section>

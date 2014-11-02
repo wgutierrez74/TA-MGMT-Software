@@ -270,3 +270,231 @@ exports.verifyUser = function(req, res) {
 	}
 	
 };
+
+exports.removeCourse = function(req, res) {
+	var removedCourse = req.body.courseN;
+	console.log(req.user);
+	var user = req.user;
+
+	if(user.course4 === removedCourse){
+		user.course4 = '';
+		user.updated = Date.now();
+		user.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} 
+			else {
+				req.login(user, function(err) {
+					if (err) {
+						res.status(400).send(err);
+					} else {
+						res.jsonp(user);
+					}
+				});
+			}
+		});
+	}
+	else if(user.course3 === removedCourse){
+		if(user.course4 === ''){
+			user.course3 = '';
+			user.updated = Date.now();
+			user.save(function(err) {
+				if (err) {
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				} else {
+					req.login(user, function(err) {
+						if (err) {
+							res.status(400).send(err);
+						} else {
+							res.jsonp(user);
+						}
+					});
+				}
+			});
+		}
+		else{
+			user.course3 = user.course4;
+			user.course4 = '';
+			user.updated = Date.now();
+			user.save(function(err) {
+				if (err) {
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				} else {
+					req.login(user, function(err) {
+						if (err) {
+							res.status(400).send(err);
+						} else {
+							res.jsonp(user);
+						}
+					});
+				}
+			});
+		}
+	}
+	else if(user.course2 === removedCourse){
+		if(user.course3 === ''){
+			user.course2 = '';
+			user.updated = Date.now();
+			user.save(function(err) {
+				if (err) {
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				} else {
+					req.login(user, function(err) {
+						if (err) {
+							res.status(400).send(err);
+						} else {
+							res.jsonp(user);
+						}
+					});
+				}
+			});
+		}
+		else{
+			if(user.course4 === ''){
+				user.course2 = user.course3;
+				user.course3 = '';
+				user.updated = Date.now();
+				user.save(function(err) {
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					} else {
+						req.login(user, function(err) {
+							if (err) {
+								res.status(400).send(err);
+							} else {
+								res.jsonp(user);
+							}
+						});
+					}
+				});
+			}
+			else{
+				user.course2 = user.course3;
+				user.course3 = user.course4;
+				user.course4 = '';
+				user.updated = Date.now();
+				user.save(function(err) {
+				if (err) {
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				} else {
+					req.login(user, function(err) {
+						if (err) {
+							res.status(400).send(err);
+						} else {
+							res.jsonp(user);
+						}
+					});
+				}
+				});
+			}
+		}
+	}
+	else if(user.course1 === removedCourse){
+		if(user.course2 === ''){
+			user.course1 = '';
+			user.updated = Date.now();
+			user.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				req.login(user, function(err) {
+					if (err) {
+						res.status(400).send(err);
+					} else {
+						res.jsonp(user);
+					}
+				});
+			}
+			});
+		}
+		else{
+			if(user.course3 === ''){
+				user.course1 = user.course2;
+				user.course2 = '';
+				user.updated = Date.now();
+
+			user.save(function(err) {
+				if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				req.login(user, function(err) {
+					if (err) {
+						res.status(400).send(err);
+					} else {
+						res.jsonp(user);
+					}
+				});
+			}
+		});
+			}
+			else{
+				if(user.course4 === ''){
+					user.course1 = user.course2;
+					user.course2 = user.course3;
+					user.course3 = '';
+					user.updated = Date.now();
+
+		user.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				req.login(user, function(err) {
+					if (err) {
+						res.status(400).send(err);
+					} else {
+						res.jsonp(user);
+					}
+				});
+			}
+		});
+				}
+				else{
+					user.course1 = user.course2;
+					user.course2 = user.course3;
+					user.course3 = user.course4;
+					user.course4 = '';
+					user.updated = Date.now();
+
+		user.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				req.login(user, function(err) {
+					if (err) {
+						res.status(400).send(err);
+					} else {
+						res.jsonp(user);
+					}
+				});
+			}
+		});
+				}
+			}
+		}
+	}
+	else{
+		console.log('Not a correct setting');
+	}
+
+	
+};

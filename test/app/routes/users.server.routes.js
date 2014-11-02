@@ -33,6 +33,7 @@ module.exports = function(app) {
 	app.route('/addCourse').post(users.addCourse);
 	//app.route('/capplicant').post(users.capplicantInfo);
 	app.route('/verifyApplicant').post(users.verifyUser);
+	app.route('/removeCourse').post(users.removeCourse);
 
 	// Setting the facebook oauth routes
 	app.route('/auth/facebook').get(passport.authenticate('facebook', {
