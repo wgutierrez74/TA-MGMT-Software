@@ -210,21 +210,3 @@ exports.removeOAuthProvider = function(req, res, next) {
 		});
 	}
 };
-
-exports.populate = function(req, res) {
-	console.log('Brooooooo');
-	var twisted = function(res){
-        return function(err, data){
-            if (err){
-                console.log('error occured');
-                return;
-            }
-            console.log(data);
-            res.jsonp(data);
-           
-        };
-    };
-
-	User.find({student: true}, 'displayName username gpa', twisted(res));
-	
-};

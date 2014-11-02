@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('users').controller('ApplicantController', ['$scope', '$http', '$location', 'Authentication', 'myservice',
+angular.module('users').controller('CApplicantController', ['$scope', '$http', '$location', 'Authentication', 'myservice',
 	function($scope, $http, $location, Authentication, myservice) {
         $scope.authentication = Authentication;
-    	if($scope.authentication.user.admin){
+    	if($scope.authentication.user.faculty){
             var t = {
             'courseN': '' 
             };
@@ -20,19 +20,7 @@ angular.module('users').controller('ApplicantController', ['$scope', '$http', '$
         }
 
         $scope.back = function(){
-            $location.path('/adminView');
-        };
-
-        $scope.verify = function(ta){
-            var temp = {
-            'uName': '' 
-            };
-            temp.uName = $scope.ta.username;
-            $http.post('/verifyApplicant', ta).success(function(response){
-                $scope.success = response;
-            }).error(function(response){
-                $scope.error = response;
-            });
+            $location.path('/faculty/course');
         };
 
 

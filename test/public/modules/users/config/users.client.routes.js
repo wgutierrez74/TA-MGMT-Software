@@ -17,6 +17,22 @@ angular.module('users').config(['$stateProvider',
 			url: '/faculty',
 			templateUrl: 'modules/users/views/facultyView.client.view.html'
 		}).
+		state('facultyCourse', {
+			url: '/faculty/course',
+			templateUrl: 'modules/users/views/facultyCourseView.client.view.html'
+		}).
+		state('facultyCourseApplicant', {
+			url: '/faculty/course/applicant',
+			templateUrl: 'modules/users/views/facultyCourseApplicant.client.view.html'
+		}).
+		state('facultyAdd', {
+			url: '/faculty/addCourse',
+			templateUrl: 'modules/users/views/facultyAdd.client.view.html'
+		}).
+		state('facultyRemove', {
+			url: '/faculty/removeCourse',
+			templateUrl: 'modules/users/views/facultyRemove.client.view.html'
+		}).
 		state('facultyCreate', {
 			url: '/SUser/createFaculty',
 			templateUrl: 'modules/users/views/settings/facultyCreate.client.view.html'

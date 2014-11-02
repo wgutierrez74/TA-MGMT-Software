@@ -1,10 +1,10 @@
-<section ng-controller="ApplicantController">
+<section ng-controller="CApplicantController">
   <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+  <!--above line is the code for the sign out header-->
   <table>
       <p>
         Yeah buddy. Please be right
-        {{ta.displayName}}
-        {{yeah}}
+        {{authentication.taName}}
       </p>
       <form name="userForm" class="signin form-horizontal" autocomplete="off">
       <fieldset>
@@ -43,6 +43,6 @@
       </fieldset>
     </form>
   </table>
-    <button type="submit" ng-click="verify(ta);" >Verify credentials for {{ta.displayName}}</button>
-    <button type="submit" ng-click="back();"> Go back</button>
+    <button type="submit" >Recommend {{ta.displayName}}</button>
+    <button type="submit" ng-click='back();'>Back</button>
 </section>
