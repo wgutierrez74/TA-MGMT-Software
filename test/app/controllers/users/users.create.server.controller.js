@@ -15,13 +15,12 @@ exports.createAdmin = function(req, res){
 	// Init Variables
 	console.log(req.body);
 
-	user.verified = true;
-	user.submitted = true;
-
 	var user = new User(req.body);
 	var message = null;
 
 	// Add missing user fields
+	user.verified = true;
+	user.submitted = true;
 	user.admin = true;
 	user.provider = 'local';
 	user.displayName = user.firstName + ' ' + user.lastName;
