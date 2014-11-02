@@ -1,44 +1,56 @@
 <section class="row" data-ng-controller="SubmitController">
 	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
 	<!--above line is the code for the sign out header-->
-	<h3 class="col-md-12 text-center">Edit your profile</h3>
-	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
-		<form name="userForm" class="signin form-horizontal" autocomplete="off">
-			<fieldset>
-				<div class="form-group">
-					<label for="firstName">First Name</label>
-					<input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="First Name" readonly>
-				</div>
-				<div class="form-group">
-					<label for="lastName">Last Name</label>
-					<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Last Name" readonly>
-				</div>
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email" readonly>
-				</div>
-				<div class="form-group">
-					<label for="username">Username</label>
-					<input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username" readonly>
-				</div>
-				<div class="form-group">
-					<label for="gpa">GPA</label>
-					<input type="text" id="gpa" name="gpa" class="form-control" data-ng-model="user.gpa" placeholder=" Fill in GPA" readonly>
-				</div>
-				<div class="form-group">
-					<label for="firstName">Abilities</label>
-					<input type="text" id="abilities" name="abilities" class="form-control" data-ng-model="user.abilities" placeholder="Fill in abilities" readonly>
-				</div>
-				<div class="form-group">
-					<label for="firstName">Advisor</label>
-					<input type="text" id="advisor" name="advisor" class="form-control" data-ng-model="user.advisor" placeholder="Fill in Advisor" readonly>
-				</div>
-				<div class="form-group">
-					<label for="firstName">Research Field</label>
-					<input type="text" id="researchField" name="researchField" class="form-control" data-ng-model="user.researchField" placeholder="Fill in your research field" readonly>
-				</div>
-				 <button type="submit" ng-click="editProfile();">Edit</button>
-			</fieldset>
-		</form>
-	</div>
+	<div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+      	<div class="container">
+        	<h2><div align="center">Welcome/Title</div></h2>
+        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
+    	</div>
+    </div>
+    <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+     	 <div class="container">
+			<h3 class="text-center">Your Profile<p></h3>
+			<div class="col-md-12" style="float: left;">
+				<form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
+					<fieldset>
+						<div class="form-group"  >
+							<label for="firstName" class="control-label col-md-2">First Name</label>
+							<div class="col-md-8"><input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="First Name" readonly></div>
+						</div>
+						<div class="form-group"  >
+							<label for="lastName" class="control-label col-md-2">Last Name</label>
+							<div class="col-md-8"><input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Last Name" readonly></div>
+						</div>
+						<div class="form-group"  >
+							<label for="email" class="control-label col-md-2">Email</label>
+							<div class="col-md-8"><input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email" readonly></div>
+						</div>
+						<div class="form-group"  >
+							<label for="username"class="control-label col-md-2">Username</label>
+							<div class="col-md-8"><input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username" readonly></div>
+						</div>
+						<div class="form-group"  >
+							<label for="gpa" class="control-label col-md-2">GPA</label>
+							<div class="col-md-8"><input type="text" id="gpa" name="gpa" class="form-control" data-ng-model="user.gpa" placeholder=" Fill in GPA" readonly></div>
+						</div>
+						<div class="form-group"  >
+							<label for="abilities" class="control-label col-md-2">Abilities</label>
+							<div class="col-md-8"><input type="text" id="abilities" name="abilities" class="form-control" data-ng-model="user.abilities" placeholder="Fill in abilities" readonly></div>
+						</div>
+						<div class="form-group"  >
+							<label for="advisors" class="control-label col-md-2">Advisor</label>
+							<div class="col-md-8"><input type="text" id="advisor" name="advisor" class="form-control" data-ng-model="user.advisor" placeholder="Fill in Advisor" readonly></div>
+						</div>
+						<div class="form-group">
+							<label for="researchfield" class="control-label col-md-2">Research Field</label>
+							<div class="col-md-8"><input type="text" id="researchField" name="researchField" class="form-control" data-ng-model="user.researchField" placeholder="Fill in your research field" readonly></div>
+						</div>
+						<div class="text-center form-group">
+						 <button type="submit" class="btn btn-large btn-primary" ng-click="editProfile();">Edit Your Profile</button>
+						 </div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+    </div>
 </section>
