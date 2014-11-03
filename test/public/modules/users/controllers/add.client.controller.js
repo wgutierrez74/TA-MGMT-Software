@@ -15,7 +15,8 @@ angular.module('users').controller('AddController', ['$window','$scope', '$http'
  					$scope.user = Authentication.user;
     			
     	   		}).error(function(response){
-    				$scope.error = response.data.message;
+    				$scope.error = response.data;
+
     	  		});	
 			$window.location.href = '/#!/faculty';
 		};

@@ -33,6 +33,7 @@ angular.module('users').controller('ApplicantController', ['$scope', '$http', '$
             }).error(function(response){
                 $scope.error = response;
             });
+            $location.path('/adminView');
         };
 
 

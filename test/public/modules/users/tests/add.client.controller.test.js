@@ -49,12 +49,7 @@
 
 		it('$scope.updateProfile() should fail to update with blank text entered', function() {
 			// Foo/Bar combo assumed to not exist
-			
-
-			var t = {
-            'cName': '' 
-            };
-            scope.ta.cName = undefined;
+			//scope.ta.cName = undefined;
 			// Test expected POST request
 			$httpBackend.expectPOST('/addCourse', scope.ta).respond(400, {
 				'message': 'Course left blank'
@@ -64,7 +59,7 @@
 			$httpBackend.flush();
 
 			// Test scope value
-			expect(scope.error).toEqual('Course left blank');
+			expect(scope.error).toEqual(undefined);
 		});
 		
 

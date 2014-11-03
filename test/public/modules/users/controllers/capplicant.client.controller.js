@@ -3,12 +3,15 @@
 angular.module('users').controller('CApplicantController', ['$scope','$http', '$location', 'Authentication', 'myservice',
 	function($scope, $http, $location, Authentication, myservice) {
         $scope.authentication = Authentication;
-    	if($scope.authentication.user.faculty){
-            var t = {
+    	$scope.t = {
+            'courseN' : ''
+        };
+        if($scope.authentication.user.faculty){
+            var w = {
             'courseN': '' 
             };
-            t.courseN = myservice.get();
-            $http.post('/applicant', t).success(function(data, status, headers, config){
+            $scope.t.courseN = myservice.get();
+            $http.post('/applicant', $scope.t).success(function(data, status, headers, config){
     		  $scope.ta = data;
     	//khj
     	   }).error(function(data, status, headers, config){

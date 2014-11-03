@@ -78,6 +78,7 @@ exports.createFaculty = function(req, res){
 
 exports.applicantInfo = function(req, res) {
 	var name = req.body.courseN;
+	console.log(name);
 		
 	var twisted = function(res){
         return function(err, data){
@@ -98,6 +99,9 @@ exports.applicantInfo = function(req, res) {
 
 exports.coursePopulate = function(req, res) {
 	var name = req.body.courseN;
+	console.log(name);
+	console.log(req.body);
+	//console.log(req);
 	var twisted = function(res){
         return function(err, data){
             if (err){
@@ -110,8 +114,8 @@ exports.coursePopulate = function(req, res) {
         };
     };
 
-	User.find({course1: name}, 'displayName username', twisted(res));
-	
+	User.find({student: true, $or:[ { course1: name }, { course2: name }, {course3: name}, {course4: name} ]}, 'displayName username', twisted(res));
+	//User.find({ student: true }).where('course1').equals(name).where('course2').equals(name).where('course3').equals(name).where('course4').equals(name).select('displayName username').exec(twisted(res));
 };
 
 exports.addCourse = function(req, res) {
@@ -121,8 +125,10 @@ exports.addCourse = function(req, res) {
 		res.status(400).send({
 			message: 'Course left blank'
 		});
+		console.log('returned properly');
 		return;
 	}
+	//console.log('didnt work');
 	var user = req.user;
 	//console.log(req.user);
 	if (user) {
@@ -171,11 +177,9 @@ exports.addCourse = function(req, res) {
 		});
 	} 
 	else{
-		console.log('Empty text or not signed in');
 		res.status(400).send({
 			message: 'User is not signed in'
 		});
-		console.log('Empty text or not signed in');
 	}
 	
 };
@@ -193,9 +197,10 @@ exports.populate = function(req, res) {
         };
     };
 
-	User.find({verified: false}, 'displayName username gpa', twisted(res));
+	User.find({verified: false, student: true}, 'displayName username gpa', twisted(res));
 	
 };
+
 
 exports.verifyUser = function(req, res) {
 	
