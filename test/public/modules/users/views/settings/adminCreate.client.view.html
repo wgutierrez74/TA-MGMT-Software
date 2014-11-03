@@ -1,5 +1,7 @@
 <section class="row" data-ng-controller="AuthenticationController">
 	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+	<div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+       <div class="container">
 	<h3 class="col-md-12 text-center">Create Admin Profile</h3>
 	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
 		<form name="userForm" data-ng-submit="createAdmin()" class="signin form-horizontal" autocomplete="off">
@@ -14,9 +16,13 @@
 				</div>
 				<div class="text-center form-group">
 					 <button type="submit">Create Admin</button>
-					 <button type="submit" ng-click="back();">Back</button>
 				</div>
+				<div>
+					 <button type="submit" ng-click="back();">Back</button>
+				</div>	
 			</fieldset>
 		</form>
 	</div>
+	</DIV>
+  </DIV>
 </section>

@@ -77,7 +77,6 @@ exports.createFaculty = function(req, res){
 };
 
 exports.applicantInfo = function(req, res) {
-	console.log('Brooooooo');
 	var name = req.body.courseN;
 		
 	var twisted = function(res){
@@ -96,29 +95,8 @@ exports.applicantInfo = function(req, res) {
 	
 };
 
-// exports.capplicantInfo = function(req, res) {
-// 	console.log('Brooooooo');
-	
-// 	var name = req.body.courseN;
-		
-// 	var twisted = function(res){
-//         return function(err, data){
-//             if (err){
-//                 console.log('error occured');
-//                 return;
-//             }
-//             //console.log(data);
-//             res.jsonp(data);
-           
-//          };
-//     };
-
-// 	 User.findOne({username : name}).exec(twisted(res));
-	
-// };
 
 exports.coursePopulate = function(req, res) {
-	console.log('Brooooooo');
 	var name = req.body.courseN;
 	var twisted = function(res){
         return function(err, data){
@@ -141,7 +119,6 @@ exports.addCourse = function(req, res) {
 	var course = req.body.cName;
 	var user = req.user;
 	console.log(req.user);
-	console.log(user);
 	if (user) {
 		
 		if(user.course1 === ''){
@@ -196,7 +173,6 @@ exports.addCourse = function(req, res) {
 };
 
 exports.populate = function(req, res) {
-	console.log('Brooooooo');
 	var twisted = function(res){
         return function(err, data){
             if (err){
@@ -215,10 +191,6 @@ exports.populate = function(req, res) {
 
 exports.verifyUser = function(req, res) {
 	
-	//console.log(req.body);
-	console.log('----------------------------------');
-	console.log(req);
-	//console.log(req.body.);
 	delete req.body.salt;
 	delete req.body.password;
 	req.user._id = req.body._id;
