@@ -1,15 +1,20 @@
+<head>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+</head>
 <section class="row" data-ng-controller="SubmitController">
 	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
 	<!--above line is the code for the sign out header-->
+	<body>
 	<div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
       	<div class="container">
-        	<h2><div align="center">Welcome/Title</div></h2>
-        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
+        	<h2><div align="center">Welcome, {{user.displayName}}</div></h2>
+        	<p>Below is your current saved appliction. If you would like to update it, click "Edit Application" at the bottom of the page.<br>Note: You may need to refresh this page to see recently made changes.</p>
     	</div>
     </div>
     <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
      	 <div class="container">
-			<h3 class="text-center">Your Profile<p></h3>
+			<h3 class="text-center">Your Application<p></h3>
 			<div class="col-md-12" style="float: left;">
 				<form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
 					<fieldset>
@@ -41,16 +46,36 @@
 							<label for="advisors" class="control-label col-md-2">Advisor</label>
 							<div class="col-md-8"><input type="text" id="advisor" name="advisor" class="form-control" data-ng-model="user.advisor" placeholder="Fill in Advisor" readonly></div>
 						</div>
-						<div class="form-group">
+						<div class="form-group"  >
 							<label for="researchfield" class="control-label col-md-2">Research Field</label>
-							<div class="col-md-8"><input type="text" id="researchField" name="researchField" class="form-control" data-ng-model="user.researchField" placeholder="Fill in your research field" readonly></div>
+							<div class="col-md-8"><input type="text" id="researchfield" name="researchfield" class="form-control" data-ng-model="user.researchfield" placeholder="Fill in your research field" readonly></div>
+						</div>
+						<hr><h4 class="text-center">&emsp;Courses you have submitted this application for: </h4>
+						<p>
+						<div class="form-group">
+			              <label for="course1" class="control-label col-md-2">Course 1</label>
+			              <div class="col-md-8"><input type="text" id="course1" name="course1" class="form-control" data-ng-model="user.course1" placeholder="course1" readonly></div>
+			              </div>
+			              <div class="form-group">
+			                <label for="course2" class="control-label col-md-2">Course 2</label>
+			                <div class="col-md-8"><input type="text" id="course2" name="course2" class="form-control" data-ng-model="user.course2" placeholder="course2" readonly></div>
+			              </div>
+			              <div class="form-group">
+			                <label for="course3" class="control-label col-md-2">Course 3</label>
+			                <div class="col-md-8"><input type="text" id="course3" name="course3" class="form-control" data-ng-model="user.course3" placeholder="course3" readonly></div>
+			              </div>
+			              <div class="form-group">
+			                <label for="course4" class="control-label col-md-2">Course 4</label>
+			                <div class="col-md-8"><input type="text" id="course4" name="course4" class="form-control" data-ng-model="user.course4" placeholder="course4" readonly></div>
+			              </div>
 						</div>
 						<div class="text-center form-group">
-						 <button type="submit" class="btn btn-large btn-primary" ng-click="editProfile();">Edit Your Profile</button>
+						 <button type="submit" class="btn btn-large btn-primary" ng-click="editProfile();">Edit Your Application</button>
 						 </div>
 					</fieldset>
 				</form>
 			</div>
 		</div>
     </div>
+</body>
 </section>

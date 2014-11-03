@@ -15,10 +15,11 @@ exports.createAdmin = function(req, res){
 	// Init Variables
 	console.log(req.body);
 
+	var user = new User(req.body);
+
 	user.verified = true;
 	user.submitted = true;
-
-	var user = new User(req.body);
+	
 	var message = null;
 
 	// Add missing user fields

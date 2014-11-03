@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication',
-	function($scope, $http, $location, Users, Authentication) {
+angular.module('users').controller('SettingsController', ['$window','$scope', '$http', '$location', 'Users', 'Authentication',
+	function($window, $scope, $http, $location, Users, Authentication) {
 		$scope.user = Authentication.user;
 
 		// If user is not signed in then redirect back home
@@ -50,6 +50,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 				}, function(response) {
 					$scope.error = response.data.message;
 				});
+				$window.location.href = '/#!/settings';
 			} else {
 				$scope.submitted = true;
 			}
@@ -69,7 +70,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 		};
 
 		$scope.profile = function(){
-			$location.path('/settings');
+			$window.location.href = '/#!/settings';
 		};
 	}
 ]);

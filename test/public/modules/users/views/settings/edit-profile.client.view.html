@@ -3,12 +3,12 @@
 	<div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
       	<div class="container">
         	<h2><div align="center">Welcome/Title</div></h2>
-        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
+        	<p>If you are interested in applying to be a teaching assistant for a class, please fill out the below form. Enter in which classes you would like this application to be submitted for and click "Save Application."</p>
     	</div>
     </div>
 	<div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
      	 <div class="container">
-			<h3 class="text-center">Edit your profile<p></h3>
+			<h3 class="text-center">Edit Your Application<p></h3>
 			<div class="col-md-12" style="float: left;">
 				<form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
 					<fieldset>
@@ -44,6 +44,8 @@
 							<label for="researchfield" class="control-label col-md-2">Research Field</label>
 							<div class="col-md-8"><input type="text" id="researchField" name="researchField" class="form-control" data-ng-model="user.researchField" placeholder="Fill in your research field"></div>
 						</div>
+						<p><hr><h4 class="text-left">Enter which courses you would like to submit this application for: </h4>
+						<p>
 						<div class="form-group">
 							<label for="course1" class="control-label col-md-2">Course 1</label>
 							<div class="col-md-8"><input type="text" id="course1" name="course1" class="form-control" data-ng-model="user.course1" placeholder="course1"></div>
@@ -61,12 +63,12 @@
 							<div class="col-md-8"><input type="text" id="course4" name="course4" class="form-control" data-ng-model="user.course4" placeholder="course4"></div>
 						</div>
 						 <div class="text-center form-group">
-					<button type="submit" class="btn btn-large btn-primary">Save Profile</button>
+					<button type="submit" class="btn btn-large btn-primary">Save Application</button>
 					 <button type="button" class="btn" ng-click="profile();">Cancel</button>				
 				</div>
 
 				<div data-ng-show="success" class="text-center text-success">
-					<strong>Profile Saved Successfully</strong>
+					<strong>Application Saved Successfully</strong>
 				</div>
 				<div data-ng-show="error" class="text-center text-danger">
 					<strong data-ng-bind="error"></strong>
