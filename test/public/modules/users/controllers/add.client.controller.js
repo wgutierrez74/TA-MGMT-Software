@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('AddController', ['$scope', '$http', '$location', 'Users', 'Authentication',
-	function($scope, $http, $location, Users, Authentication) {
+angular.module('users').controller('AddController', ['$window','$scope', '$http', '$location', 'Users', 'Authentication',
+	function($window, $scope, $http, $location, Users, Authentication) {
 		$scope.user = Authentication.user;
 
 		// var t = {
@@ -22,12 +22,12 @@ angular.module('users').controller('AddController', ['$scope', '$http', '$locati
     				$scope.error = response.data.message;
     				$scope.success = 'Fuck no';
     	  		});	
-			
+			$window.location.href = '/#!/faculty';
 		};
 
-		
-
-		
+		$scope.facultyHome = function(){
+			$window.location.href = '/#!/faculty';
+		};		
 		
 	}
 ]);

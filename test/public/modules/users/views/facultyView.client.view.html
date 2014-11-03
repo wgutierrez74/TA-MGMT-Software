@@ -2,7 +2,7 @@
   <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
   <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
         <div class="container">
-          <h2><div align="center">Welcome/Title</div></h2>
+          <h2><div align="center">Welcome, {{faculty.displayName}}</div></h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
       </div>
     </div>
@@ -10,11 +10,8 @@
        <div class="container">
   <table>
     <thead>
-      <tr><th colspan="4">Courses</th></tr>
+      <tr><th colspan="4"><h3>Your Courses</h3></th></tr>
     </thead>
-      <p>
-        Yeah buddy. {{yeah}}
-      </p>
     <tr>
        <td>
         <a href ng-click="courseApplicants(course1)">{{course1}}</a href>
@@ -32,7 +29,7 @@
     </tr>
     <tr>
       <td>
-        <a href ng-click="courseApplicants(course4)">{{course4}}</a href>
+        <a href ng-click="courseApplicants(course4)">{{course4}}</a href><p>
       </td>
     </tr>
   </table>

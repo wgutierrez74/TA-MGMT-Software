@@ -31,7 +31,7 @@ angular.module('users').config(['$stateProvider',
 		}).
 		state('facultyRemove', {
 			url: '/faculty/removeCourse',
-			templateUrl: 'modules/users/views/facultyRemove.client.view.html'
+			templateUrl: 'modules/users/views/settings/facultyRemove.client.view.html'
 		}).
 		state('facultyCreate', {
 			url: '/SUser/createFaculty',

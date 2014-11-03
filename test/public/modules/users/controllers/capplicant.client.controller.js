@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('users').controller('CApplicantController', ['$scope', '$http', '$location', 'Authentication', 'myservice',
+angular.module('users').controller('CApplicantController', ['$scope','$http', '$location', 'Authentication', 'myservice',
 	function($scope, $http, $location, Authentication, myservice) {
         $scope.authentication = Authentication;
     	if($scope.authentication.user.faculty){
