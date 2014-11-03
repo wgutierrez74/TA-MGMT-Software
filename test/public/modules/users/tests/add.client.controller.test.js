@@ -47,21 +47,24 @@
 
 		
 
-		it('$scope.updateProfile() should fail to update with wrong credentials', function() {
+		it('$scope.updateProfile() should fail to update with blank text entered', function() {
 			// Foo/Bar combo assumed to not exist
-			scope.authentication.user = 'Foo';
-			scope.credentials = 'Bar';
+			
 
+			var t = {
+            'cName': '' 
+            };
+            scope.ta.cName = undefined;
 			// Test expected POST request
-			$httpBackend.expectPOST('/updateProfile').respond(400, {
-				'message': 'Unknown user'
+			$httpBackend.expectPOST('/addCourse', scope.ta).respond(400, {
+				'message': 'Course left blank'
 			});
 
 			scope.updateProfile();
 			$httpBackend.flush();
 
 			// Test scope value
-			expect(scope.error).toEqual('Unknown user');
+			expect(scope.error).toEqual('Course left blank');
 		});
 		
 

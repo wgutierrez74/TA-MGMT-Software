@@ -115,10 +115,16 @@ exports.coursePopulate = function(req, res) {
 };
 
 exports.addCourse = function(req, res) {
-	
 	var course = req.body.cName;
+	if(course === undefined){
+		console.log('Course is blank');
+		res.status(400).send({
+			message: 'Course left blank'
+		});
+		return;
+	}
 	var user = req.user;
-	console.log(req.user);
+	//console.log(req.user);
 	if (user) {
 		
 		if(user.course1 === ''){
@@ -165,9 +171,11 @@ exports.addCourse = function(req, res) {
 		});
 	} 
 	else{
+		console.log('Empty text or not signed in');
 		res.status(400).send({
 			message: 'User is not signed in'
 		});
+		console.log('Empty text or not signed in');
 	}
 	
 };
