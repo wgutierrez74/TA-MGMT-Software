@@ -1,4 +1,4 @@
-'use strict';
+	'use strict';
 
 /**
  * Module dependencies.
@@ -106,7 +106,7 @@ describe('User Model Unit Tests:', function() {
 			faculty.save(done);
 		});
 
-		it('should have admin field set true', function(done) {
+		it('should have faculty field set true', function(done) {
 			User.find({ faculty: true}, function(err, users) {
 				users.should.have.length(1);
 				done();
