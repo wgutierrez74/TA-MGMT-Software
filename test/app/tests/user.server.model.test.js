@@ -10,7 +10,7 @@ var should = require('should'),
 /**
  * Globals
  */
-var user, user2, admin;
+var user, user2, admin, faculty;
 
 /**
  * Unit tests
@@ -41,6 +41,12 @@ describe('User Model Unit Tests:', function() {
 			provider: 'local',
 			admin: true
 		});
+		faculty = new User({
+			username: 'facultyname',
+			password: 'password',
+			provider: 'local',
+			faculty:true
+		});
 		done();
 	});
 
@@ -68,23 +74,40 @@ describe('User Model Unit Tests:', function() {
 	});
 
 	describe('Method Save Admin', function() {
-		/*it('should begin with no admins', function(done) {
-			User.find({}, function(err, users) {
+		it('should begin with no admins', function(done) {
+			User.find({admin: true}, function(err, users) {
 				users.should.have.length(0);
 				done();
 			});
-		});*/
-
+		});
 		it('should save admin without problems', function(done) {
-			/*User.find({ admin: true}, function(err, users) {
-				users.should.have.length(0);
-				done();
-			});*/
+			
 			admin.save(done);
 		});
 
 		it('should have admin field set true', function(done) {
 			User.find({ admin: true}, function(err, users) {
+				users.should.have.length(1);
+				done();
+			});
+		});
+	});
+
+	describe('Method Save Faculty', function() {
+		it('should begin with no faculty', function(done) {
+			User.find({faculty: true}, function(err, users) {
+				users.should.have.length(0);
+				done();
+			});
+		});
+
+		it('should save faculty without problems', function(done) {
+		
+			faculty.save(done);
+		});
+
+		it('should have admin field set true', function(done) {
+			User.find({ faculty: true}, function(err, users) {
 				users.should.have.length(1);
 				done();
 			});
