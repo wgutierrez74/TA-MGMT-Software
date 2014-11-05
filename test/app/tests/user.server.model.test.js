@@ -50,7 +50,7 @@ describe('User Model Unit Tests:', function() {
 		done();
 	});
 
-	describe('Method Save', function() {
+	describe('Method Save User', function() {
 		it('should begin with no users', function(done) {
 			User.find({}, function(err, users) {
 				users.should.have.length(0);
@@ -70,6 +70,14 @@ describe('User Model Unit Tests:', function() {
 			});
 		});
 
+
+		it('should have no courses added', function(done) {
+			//user.signin();
+			User.find({course1: '', course2: '', course3: '', course4: ''}, function(err, users) {
+				users.should.have.length(1);
+				done();
+			});
+		});
 		
 	});
 
@@ -107,6 +115,18 @@ describe('User Model Unit Tests:', function() {
 			done();
 		});
 
+		it('should allow user verification to update', function(done){
+			user.verified = true;
+			user.save();
+			done();
+		});
+
+		it('should return 1 verified user', function(done){
+			User.find({verified: true},function(err, users) {
+				users.should.have.length(1);
+				done();
+			});
+		})
 	
 	});
 
