@@ -2,9 +2,9 @@
 
 (function() {
 	// Applicant controller Spec
-	describe('ApplicantController', function() {
+	describe('SUserController', function() {
 		// Initialize global variables
-		var ApplicantController,
+		var SUserController,
 			scope,
 			$httpBackend,
 			$stateParams,
@@ -39,12 +39,27 @@
 			$httpBackend = _$httpBackend_;
 			$location = _$location_;
 
-			// Initialize the Password controller
-			ApplicantController = $controller('ApplicantController', {
+			// Initialize the Faculty controller
+			SUserController = $controller('SUserController', {
 				$scope: scope
 			});
 		}));
 
+		it('$scope.createFaculty() should go to correct url', function() {
+			// Test expected POST request
+			scope.createFaculty();
+
+			// Test scope value
+			expect($location.url()).toBe('/SUser/createFaculty');
+		});
+
+		it('$scope.createAdmin() should go to correct url', function() {
+			// Test expected POST request
+			scope.createAdmin();
+
+			// Test scope value
+			expect($location.url()).toBe('/SUser/createAdmin');
+		});
 
 	});
 }());

@@ -120,6 +120,7 @@ exports.coursePopulate = function(req, res) {
 
 exports.addCourse = function(req, res) {
 	var course = req.body.cName;
+	
 	if(course === undefined){
 		console.log('Course is blank');
 		res.status(400).send({
@@ -127,6 +128,41 @@ exports.addCourse = function(req, res) {
 		});
 		console.log('returned properly');
 		return;
+	}
+	console.log(course.length);
+	var i = 0;
+	if(course.length < 7){
+			console.log('Incorect Format');
+			res.status(400).send({
+				message: 'Text not long enough'
+			});
+			return;
+	}
+	while(i<7){
+		if(i<3){
+			var x = course.charCodeAt(i);
+			if((x>64&&x<91)||(x>96&&x<123)||(x>127&&x<155)||(x>159&&x<166)){
+				console.log('It\'s a letter');
+			}
+			else{
+				console.log('Incorect Format');
+				res.status(400).send({
+					message: 'Incorect Format - Doesn\'t begin with letters'
+				});
+				return;
+			}
+		}
+		else{
+			var r = course.charCodeAt(i);
+			if(r>57 || r<48){
+				console.log('Not a number or Incorect Format');
+				res.status(400).send({
+					message: 'Incorect Format'
+				});
+				return;
+			}
+		}
+		i = i + 1;
 	}
 	//console.log('didnt work');
 	var user = req.user;

@@ -57,12 +57,50 @@
 
 			scope.updateProfile();
 			$httpBackend.flush();
-
 			// Test scope value
-			expect(scope.error).toEqual(undefined);
+			expect(scope.error).toEqual('Course left blank');
+
 		});
 		
+		it('$scope.updateProfile() should fail if text entered is not long enough', function() {
+			
+			scope.ta = '12345678';
+			
+			$httpBackend.expectPOST('/addCourse', scope.ta).respond(400, {
+				'message': 'Test not long enough'
+			});
+			scope.updateProfile();
+			$httpBackend.flush();
+			// Test scope value
+			expect(scope.error).toEqual('Test not long enough');
 
-		
+		});
+
+		it('$scope.facultyHome() should go to correct url', function() {
+			// Test expected POST request
+			scope.facultyHome();
+
+			// Test scope value
+			expect($location.url()).toBe('/faculty');
+		});
+		// it('$scope.updateProfile() should fail if text\'s first 3 characters aren\' letters', function() {
+			
+		// 	var t = {
+  //           'courseN': '' 
+  //           };
+  //           t.courseN = '1234567';
+			
+		// 	$httpBackend.expectPOST('/addCourse', t).respond(400, {
+		// 		'message': 'Incorect Format - Doesn\'t begin with letters'
+		// 	});
+			
+		// 	scope.updateProfile();
+		// 	$httpBackend.flush();
+		// 	console.log(scope.error);
+		// 	// Test scope value
+		// 	expect(scope.error).toEqual('Incorect Format - Doesn\'t begin with letters');
+
+		// });
+
 	});
 }());

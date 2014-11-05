@@ -2,9 +2,9 @@
 
 (function() {
 	// Applicant controller Spec
-	describe('ApplicantController', function() {
+	describe('SubmitController', function() {
 		// Initialize global variables
-		var ApplicantController,
+		var SubmitController,
 			scope,
 			$httpBackend,
 			$stateParams,
@@ -39,12 +39,19 @@
 			$httpBackend = _$httpBackend_;
 			$location = _$location_;
 
-			// Initialize the Password controller
-			ApplicantController = $controller('ApplicantController', {
+			// Initialize the Faculty controller
+			SubmitController = $controller('SubmitController', {
 				$scope: scope
 			});
 		}));
 
+		it('$scope.editProfile() should go to correct url', function() {
+			// Test expected POST request
+			scope.editProfile();
+
+			// Test scope value
+			expect($location.url()).toBe('/settings/profile');
+		});
 
 	});
 }());

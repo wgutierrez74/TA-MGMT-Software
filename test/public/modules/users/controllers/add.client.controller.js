@@ -9,20 +9,19 @@ angular.module('users').controller('AddController', ['$window','$scope', '$http'
   //   	};
 
 
-		$scope.updateProfile = function(ta) {
-				$http.post('/addCourse', $scope.ta).success(function(response){
- 					Authentication.user = response;
- 					$scope.user = Authentication.user;
-    			
-    	   		}).error(function(response){
-    				$scope.error = response.data;
-
-    	  		});	
+		$scope.updateProfile = function() {
+			$http.post('/addCourse', $scope.ta).success(function(response){
+ 				Authentication.user = response;
+ 				$scope.user = Authentication.user;
+    		
+    	   	}).error(function(response){
+    			$scope.error = response.message;
+   	  		});	
 			$window.location.href = '/#!/faculty';
 		};
 
 		$scope.facultyHome = function(){
-			$window.location.href = '/#!/faculty';
+			$location.path('/faculty');
 		};		
 		
 	}

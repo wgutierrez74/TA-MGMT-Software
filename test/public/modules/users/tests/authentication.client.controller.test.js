@@ -114,5 +114,13 @@
 			// Test scope value
 			expect(scope.error).toBe('Username already exists');
 		});
+
+		it('$scope.back() should go to correct url', function() {
+			// Test expected POST request
+			scope.back();
+
+			// Test scope value
+			expect($location.url()).toBe('/SUser');
+		});
 	});
 }());

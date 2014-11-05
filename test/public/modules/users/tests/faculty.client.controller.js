@@ -2,9 +2,9 @@
 
 (function() {
 	// Applicant controller Spec
-	describe('ApplicantController', function() {
+	describe('FacultyController', function() {
 		// Initialize global variables
-		var ApplicantController,
+		var FacultyController,
 			scope,
 			$httpBackend,
 			$stateParams,
@@ -39,12 +39,36 @@
 			$httpBackend = _$httpBackend_;
 			$location = _$location_;
 
-			// Initialize the Password controller
-			ApplicantController = $controller('ApplicantController', {
+			// Initialize the Faculty controller
+			FacultyController = $controller('FacultyController', {
 				$scope: scope
 			});
 		}));
 
+		// it('$scope.removeCourse() should go to correct url', function() {
+		// 	// Test expected POST request
+		// 	scope.user = Authentication.user;
+		// 	scope.addCourse();
+
+		// 	// Test scope value
+		// 	expect($location.url()).toBe('/faculty/addCourse');
+		// });
+
+		// it('$scope.addCourse() should go to correct url', function() {
+		// 	// Test expected POST request
+		// 	scope.removeCourse();
+
+		// 	// Test scope value
+		// 	expect($location.url()).toBe('/faculty/removeCourse');
+		// });
+
+		// it('$scope.addCourse() should go to correct url', function() {
+		// 	// Test expected POST request
+		// 	scope.courseApplicants();
+
+		// 	// Test scope value
+		// 	expect($location.url()).toBe('/faculty/course');
+		// });
 
 	});
 }());

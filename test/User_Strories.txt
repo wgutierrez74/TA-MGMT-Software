@@ -1,0 +1,21 @@
+User Stories:
+
+1. As a StudentUser I want to update my profile
+2. As an AdminUser I want to verify unverified users - GPA
+3. As a FacultyUser I want to Add a course that I'm teaching that semester
+4. As a FacultyUser I want to click on one of my listed courses and display StudentUsers that want to TA for that selected course
+5. As a FacultyUser I want to I want to remove a course I'm currently teaching
+6. As a SUser I want to create a FacultyUser
+7. As a SUser I want to create an AdminUser
+
+
+Not Implemented:
+8. As a StudentUser I want to upload and save a PDF
+9. As an AdminUser I want to verify unverified users - Speech Test
+10. As a Faculty User I want to recommend TA's for my course which will be displayed under the particular course name;
+11. As a FacultyUser I want to remove a selected TA from a particular course 
+12. 
+13.
+14.
+15.
+16.

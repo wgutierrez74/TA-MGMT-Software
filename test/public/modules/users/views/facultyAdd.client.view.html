@@ -7,10 +7,10 @@
 		<form name="userForm"class="signin form-horizontal" autocomplete="off">
 			<fieldset>
 				<div class="form-group">
-					<label for="course">&emsp;Type in the name of the course that you would like to add</label>
-					<input type="text" id="course" name="course" class="form-control" data-ng-model="ta.cName" placeholder="CIS 4930 ex."><p>
+					<label for="course">Type in the name of the course that you would like to add. Pay attention to format or you will not be able to register the course.</label>
+					<input type="text" id="course" name="course" class="form-control" data-ng-model="ta.cName" placeholder="CIS4930 ex."><p>
 				<div class="text-center form-group">
-					<button type="submit" ng-click="updateProfile(ta);" class="btn btn-large btn-primary">Add Course</button>&ensp;
+					<button type="submit" ng-click="updateProfile();" class="btn btn-large btn-primary">Add Course</button>&ensp;
 					<button type="button" class="btn btn-large" ng-click="facultyHome()">Nevermind</button>
 					<!--<button type="submit" ng-click="updateProfile(ta);" class="btn btn-large btn-primary">Add Course {{ta.cName}}</button>-->
 					 	  				
