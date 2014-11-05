@@ -93,6 +93,23 @@ describe('User Model Unit Tests:', function() {
 		});
 	});
 
+	describe('Method Verify', function(){
+		it('should return 0 if no users have been verified', function(done){
+			User.find({verified: true}, function(err, users){
+				users.should.have.length(0);
+				done();
+			});
+			
+		});
+
+		it('should be able to verify a user that is unverified', function(done){
+			user.verified = false;
+			done();
+		});
+
+	
+	});
+
 	describe('Method Save Faculty', function() {
 		it('should begin with no faculty', function(done) {
 			User.find({faculty: true}, function(err, users) {
