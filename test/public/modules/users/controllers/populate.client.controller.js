@@ -19,7 +19,11 @@ angular.module('users').controller('PopulateController', ['$scope', '$http', '$l
 
         $scope.userInfo = function(taName){
             myservice.set(taName);
-            $location.path('adminView/applicant');
+            $location.path('/advisorView/applicants/ta');
+        };
+
+        $scope.back = function(){
+            $location.path('/advisorView');
         };
 
   }]);

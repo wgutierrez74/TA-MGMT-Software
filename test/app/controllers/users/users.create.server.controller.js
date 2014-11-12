@@ -7,7 +7,8 @@ var _ = require('lodash'),
 	errorHandler = require('../errors'),
 	mongoose = require('mongoose'),
 	passport = require('passport'),
-	User = mongoose.model('User');
+	User = mongoose.model('User'),
+	Course = mongoose.model('Course');
 
 exports.createAdmin = function(req, res){
 	delete req.body.roles;
@@ -119,8 +120,8 @@ exports.coursePopulate = function(req, res) {
 };
 
 exports.addCourse = function(req, res) {
-	var course = req.body.cName;
-	
+	var course = req.body.courseName;
+
 	if(course === undefined){
 		console.log('Course is blank');
 		res.status(400).send({
@@ -164,60 +165,21 @@ exports.addCourse = function(req, res) {
 		}
 		i = i + 1;
 	}
-	//console.log('didnt work');
-	var user = req.user;
-	//console.log(req.user);
-	if (user) {
 		
-		if(user.course1 === ''){
-			user.course1 = course;
-		}
-		else{
-			if(user.course2 === ''){
-				user.course2 = course;
-			}
-			else{
-				if(user.course3 === ''){
-					user.course3 = course;
-				}
-				else{
-					if(user.course4 === ''){
-						user.course4 = course;
-					}
-					else{
-						res.status(400).send({
-							message: 'Cannot add course. Too many courses'
-						});
-						return;
-					}
-				}
-			}
+	var courseNew = new Course(req.body);
+	courseNew.provider = 'local';
+	courseNew.updated = Date.now();
+	courseNew.active = true;
+
+	courseNew.save(function(err) {
+		if (err) {
+			console.log('save error');
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
 		}
 
-		user.updated = Date.now();
-
-		user.save(function(err) {
-			if (err) {
-				return res.status(400).send({
-					message: errorHandler.getErrorMessage(err)
-				});
-			} else {
-				req.login(user, function(err) {
-					if (err) {
-						res.status(400).send(err);
-					} else {
-						res.jsonp(user);
-					}
-				});
-			}
-		});
-	} 
-	else{
-		res.status(400).send({
-			message: 'User is not signed in'
-		});
-	}
-	
+	});
 };
 
 exports.populate = function(req, res) {
@@ -237,6 +199,43 @@ exports.populate = function(req, res) {
 	
 };
 
+
+exports.populateCourses = function(req, res) {
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	Course.find({active: true}, 'courseName', twisted(res));
+	
+};
+
+exports.instructorCourses = function(req, res) {
+	console.log(req.user);
+	console.log(req.body);
+	var instructor = req.user.displayName;
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	Course.find({active: true, instructor: instructor}, 'courseName', twisted(res));
+	
+};
 
 exports.verifyUser = function(req, res) {
 	
@@ -520,5 +519,50 @@ exports.removeCourse = function(req, res) {
 		console.log('Not a correct setting');
 	}
 
+	
+};
+
+exports.recommendTA = function(req, res) {
+	var cName = req.body.courseN;
+	var TAName = req.body.Name;
+	var TAUName = req.body.TAUName;
+	var iName = req.user.displayName;
+	console.log(TAName + ' ' + TAUName);
+	Course.findOneAndUpdate({courseName: cName, instructor: iName},{$push: {recommended: TAName}},{safe: true, upsert: true},
+    function(err, model) {
+        console.log(err);
+    });
+};
+
+exports.unrecommendTA = function(req, res) {
+	var cName = req.body.courseN;
+	var TAName = req.body.Name;
+	var TAUName = req.body.TAUName;
+	var iName = req.user.displayName;
+	console.log(TAName + ' ' + TAUName);
+	Course.findOneAndUpdate({courseName: cName, instructor: iName},{$pull: {recommended: TAName}},{safe: true, upsert: true},
+    function(err, model) {
+        console.log(err);
+    });
+};
+
+exports.uploadResume = function(req, res) {
+	console.log(req);
+};
+
+exports.allApplicants = function(req, res) {
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	User.find({student : true}).exec(twisted(res));
 	
 };

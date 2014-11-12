@@ -1,0 +1,31 @@
+<section class="row" data-ng-controller="AddController">
+		<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+	<!--above line is the code for the sign out header-->
+    <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+     	 <div class="container">
+		<h2>Add Course</h2>
+		<form name="userForm"class="signin form-horizontal" autocomplete="off">
+			<fieldset>
+				<div class="form-group">
+					<label for="course">Type in the name of the course that you would like to add. Pay attention to format or you will not be able to register the course.</label>
+					<input type="text" id="course" name="course" class="form-control" data-ng-model="course.courseName" placeholder="CIS4930 ex.">
+				</div>
+				<div class="form-group">
+					<input type="text" id="course" name="teacher" class="form-control" data-ng-model="course.instructor" placeholder="Course Instructor"><p>
+				</div>
+				<div class="text-center form-group">
+					<button type="submit" ng-click="addCourse();" class="btn btn-large btn-primary">Add Course</button>&ensp;
+					<button type="button" class="btn btn-large" ng-click="back()">Nevermind</button>
+				</div>
+				<div data-ng-show="success" class="text-center text-success">
+					<strong>Course added successfully</strong>
+				</div>
+				<div data-ng-show="error" class="text-center text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+</div>
+</section>

@@ -1,6 +1,6 @@
-<section ng-controller="PopulateController">
+<section ng-controller="AdvisorController">
   <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-  <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+   <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
         <div class="container">
           <h2><div align="center">Welcome/Title</div></h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
@@ -8,22 +8,18 @@
     </div>
   <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
        <div class="container">
-  <input type="text" ng-model="nameFilter" placeholder="Search..."/>
   <table>
     <thead>
-      <tr><th colspan="4">Applicants</th></tr>
+      <tr><th colspan="4"></th></tr>
     </thead>
     <tbody>
-      <tr ng-repeat="ta in applicantList | filter:nameFilter">
-        <td>{{$index + 1}}</td>
-        <td>     
-          <a href ng-click="userInfo(ta.username)">{{ta.displayName}}</a href>
-            {{ta.gpa}}&nbsp;
-        </td>
-      </tr>
     </tbody>
   </table>
-     <button type="submit" ng-click="back();">Back to Home View</button> 
-   </DIV>
+   <button type="submit" ng-click="homeAdvisorView();">Home</button> 
+  <button type="submit" ng-click="matchmaking();">Matchmaking</button>
+  <button type="submit" ng-click="systemSettings();">System Settings</button>
+  <button type="submit" ng-click="courses();">Courses</button>
+  <button type="submit" ng-click="applicants();">TA Applicants</button>
+  </DIV>
   </DIV>
 </section>

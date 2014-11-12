@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('CourseController', ['$scope', '$http', '$location', 'Authentication', 'Users', 'myservice',
-	function($scope, $http, $location, Authentication, Users, myservice) {
+angular.module('users').controller('CourseController', ['$scope', '$http', '$location', 'Authentication', 'Users', 'myservice', 'courseservice',
+	function($scope, $http, $location, Authentication, Users, myservice, courseservice) {
         $scope.authentication = Authentication;
         
         if($scope.authentication.user.faculty){
@@ -11,6 +11,7 @@ angular.module('users').controller('CourseController', ['$scope', '$http', '$loc
             'courseN': '' 
             };
             t.courseN = myservice.get();
+            courseservice.addProduct(t.courseN);
             $http.post('/courseTAList', t).success(function(data, status, headers, config){
                 $scope.applicantList = data;
     	    }).error(function(data, status, headers, config){

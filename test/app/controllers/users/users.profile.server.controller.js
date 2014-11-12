@@ -14,7 +14,7 @@ var _ = require('lodash'),
  */
 exports.update = function(req, res) {
 	// Init Variables
-	console.log(req);
+	//console.log(req);
 	var user = req.user;
 	var message = null;
 

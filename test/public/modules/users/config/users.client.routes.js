@@ -25,14 +25,6 @@ angular.module('users').config(['$stateProvider',
 			url: '/faculty/course/applicant',
 			templateUrl: 'modules/users/views/facultyCourseApplicant.client.view.html'
 		}).
-		state('facultyAdd', {
-			url: '/faculty/addCourse',
-			templateUrl: 'modules/users/views/facultyAdd.client.view.html'
-		}).
-		state('facultyRemove', {
-			url: '/faculty/removeCourse',
-			templateUrl: 'modules/users/views/settings/facultyRemove.client.view.html'
-		}).
 		state('facultyCreate', {
 			url: '/SUser/createFaculty',
 			templateUrl: 'modules/users/views/settings/facultyCreate.client.view.html'
@@ -70,12 +62,24 @@ angular.module('users').config(['$stateProvider',
 			url: '/password/reset/:token',
 			templateUrl: 'modules/users/views/password/reset-password.client.view.html'
 		}).
-		state('adminView', {
-			url: '/adminView' ,
+		state('advisorView', {
+			url: '/advisorView' ,
+			templateUrl: 'modules/users/views/advisorView.client.view.html'
+		}).
+		state('advisorView-applicant', {
+			url: '/advisorView/applicants' ,
 			templateUrl: 'modules/users/views/listApplicants.client.view.html'
 		}).
-		state('adminView-applicant', {
-			url: '/adminView/applicant' ,
+		state('advisorView-courses', {
+			url: '/advisorView/courses' ,
+			templateUrl: 'modules/users/views/advisorCoursesView.client.view.html'
+		}).
+		state('advisorView-courses-add', {
+			url: '/advisorView/courses/add' ,
+			templateUrl: 'modules/users/views/courseAdd.client.view.html'
+		}).
+		state('advisorView-ta', {
+			url: '/advisorView/applicants/ta' ,
 			templateUrl: 'modules/users/views/applicantView.client.view.html'
 		}).
 		state('badPermission', {

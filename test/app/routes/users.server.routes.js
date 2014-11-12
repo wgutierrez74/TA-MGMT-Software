@@ -26,6 +26,7 @@ module.exports = function(app) {
 	app.route('/auth/signout').get(users.signout);
 
 	app.route('/populate').get(users.populate);
+	app.route('/populateActiveCourses').get(users.populateCourses);
 	app.route('/createAdmin').post(users.createAdmin);
 	app.route('/createFaculty').post(users.createFaculty);
 	app.route('/applicant').post(users.applicantInfo);
@@ -34,6 +35,10 @@ module.exports = function(app) {
 	//app.route('/capplicant').post(users.capplicantInfo);
 	app.route('/verifyApplicant').post(users.verifyUser);
 	app.route('/removeCourse').post(users.removeCourse);
+	app.route('/instructorCoursePopulate').post(users.instructorCourses);
+	app.route('/recommendTA').post(users.recommendTA);
+	app.route('/uploadResume').post(users.uploadResume);
+	app.route('/allApplicants').post(users.allApplicants);
 
 	// Setting the facebook oauth routes
 	app.route('/auth/facebook').get(passport.authenticate('facebook', {

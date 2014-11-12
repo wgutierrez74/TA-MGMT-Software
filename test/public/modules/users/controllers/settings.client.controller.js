@@ -50,6 +50,11 @@ angular.module('users').controller('SettingsController', ['$window','$scope', '$
 				}, function(response) {
 					$scope.error = response.data.message;
 				});
+				$http.post('/uploadResume',$scope.user).success(function(data, status, headers, config){
+                	$scope.success = 'Succefully uploaded resume';
+    	    	}).error(function(data, status, headers, config){
+    			      $scope.error = status;
+    	    	});
 				$window.location.href = '/#!/settings';
 			} else {
 				$scope.submitted = true;

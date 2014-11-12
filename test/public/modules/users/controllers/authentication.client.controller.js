@@ -24,7 +24,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				// If successful we assign the response to the global user model
 				$scope.authentication.user = response;
 				if($scope.authentication.user.admin){
-					$location.path('/adminView');
+					$location.path('/advisorView');
 				}
 				else if($scope.authentication.user.faculty){
 					$location.path('/faculty');

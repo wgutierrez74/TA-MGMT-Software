@@ -4,24 +4,18 @@ angular.module('users').controller('AddController', ['$window','$scope', '$http'
 	function($window, $scope, $http, $location, Users, Authentication) {
 		$scope.user = Authentication.user;
 
-		// var t = {
-  //   		'courseN': '' 
-  //   	};
 
-
-		$scope.updateProfile = function() {
-			$http.post('/addCourse', $scope.ta).success(function(response){
- 				Authentication.user = response;
- 				$scope.user = Authentication.user;
-    		
+		$scope.addCourse = function() {
+			$http.post('/addCourse', $scope.course).success(function(response){
+    			$scope.success = 'Succesfully added course '+ $scope.course.courseN + ' to registrar';
     	   	}).error(function(response){
     			$scope.error = response.message;
    	  		});	
-			$window.location.href = '/#!/faculty';
+			//$window.location.href = '/#!/advisorView/courses';
 		};
 
-		$scope.facultyHome = function(){
-			$location.path('/faculty');
+		$scope.back = function(){
+			$location.path('/advisorView/courses');
 		};		
 		
 	}

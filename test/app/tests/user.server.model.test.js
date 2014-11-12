@@ -126,7 +126,7 @@ describe('User Model Unit Tests:', function() {
 				users.should.have.length(1);
 				done();
 			});
-		})
+		});
 	
 	});
 

@@ -5,6 +5,7 @@ angular.module('users').factory('myservice', [
 	function(){
 
 		var savedData = {};
+		var instructorData = {};
  		
  		function set(data) {
    			savedData = data;
@@ -12,10 +13,18 @@ angular.module('users').factory('myservice', [
  		function get() {
   			return savedData;
  		}
+ 		function setInstructor(data) {
+   			instructorData = data;
+		}
+ 		function getInstructor() {
+  			return instructorData;
+ 		}
 
  		return {
  			set: set,
- 	 		get: get
+ 	 		get: get,
+ 	 		setInstructor: setInstructor,
+ 	 		getInstructor: getInstructor
  	 		
  		};
 	}
