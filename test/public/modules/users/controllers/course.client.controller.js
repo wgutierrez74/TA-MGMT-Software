@@ -22,6 +22,8 @@ angular.module('users').controller('CourseController', ['$scope', '$http', '$loc
             $location.path('/badPermission');
         }
 
+        $scope.show = myservice.get();
+
         $scope.userInfo = function(name){
             myservice.set(name);
             $location.path('/faculty/course/applicant');
