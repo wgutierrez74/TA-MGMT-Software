@@ -54,7 +54,7 @@
                       <div class="well">
                         <table>
                           <tbody>
-                            <tr ng-repeat="app in applicantList | filter:nameFilter">           
+                            <tr ng-repeat="app in allApplicants | filter:nameFilter">           
                               <td>   
                                 <a href ng-click="userInfo(app.username)">{{app.displayName}}</a href>
                               </td>

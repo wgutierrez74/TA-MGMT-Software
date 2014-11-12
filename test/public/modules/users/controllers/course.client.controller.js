@@ -6,6 +6,7 @@ angular.module('users').controller('CourseController', ['$scope', '$http', '$loc
         
         if($scope.authentication.user.faculty){
             $scope.applicantsList = [];
+            $scope.allApplicants = [];
     	    $scope.nameFilter = null;
             var t = {
             'courseN': '' 
@@ -17,6 +18,11 @@ angular.module('users').controller('CourseController', ['$scope', '$http', '$loc
     	    }).error(function(data, status, headers, config){
                 $scope.error = status;
     	    });
+             $http.get('/allApplicants').success(function(data, status, headers, config){
+                $scope.allApplicants = data;
+            }).error(function(data, status, headers, config){
+                $scope.error = status;
+            });
         }
         else{
             $location.path('/badPermission');
