@@ -28,6 +28,7 @@ console.log(req.body);
 	user.student = true;
 	//user.faculty = true;
 	//user.admin = true;
+	//user.superuser = true;
 
 	// Then save the user 
 	user.save(function(err) {
