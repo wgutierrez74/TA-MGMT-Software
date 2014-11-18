@@ -1,25 +1,180 @@
+<link rel="stylesheet" href="../../lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
 <section ng-controller="AdvisorController">
   <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-   <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
-        <div class="container">
-          <h2><div align="center">Welcome/Title</div></h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
+  <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+    <div class="container">
+      <h2>Welcome/Title</h2>
+      <p>"Active Courses" are the courses that are active for the current semester.<br>"All Registered Courses" shows all courses that have been created, whether or not they are active in the current semester, a past semester, or future semester.</p>
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Collapsible Group Item #1
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
-       <div class="container">
-  <table>
-    <thead>
-      <tr><th colspan="4"></th></tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-   <button type="submit" ng-click="homeAdvisorView();">Home</button> 
-  <button type="submit" ng-click="matchmaking();">Matchmaking</button>
-  <button type="submit" ng-click="systemSettings();">System Settings</button>
-  <button type="submit" ng-click="courses();">Courses</button>
-  <button type="submit" ng-click="applicants();">TA Applicants</button>
-  </DIV>
+    <div class="container">
+      <table>
+        <thead>
+          <tr><th colspan="4"></th></tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <tabset>
+        <tab heading="Matchmaking"><p><p>              
+            before well<div class="well">
+              inside well
+            </div>after well
+        </tab>
+        <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
+          {{tab.content}}
+        </tab>
+        <tab heading="System Settings"><p><p>              
+            before well<div class="well">
+              inside well
+            </div>after well
+        </tab>
+        <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
+          {{tab.content}}
+        </tab>
+        <tab heading="Courses"><p><p> 
+          <section ng-controller="ACourseController">           
+            <button type="submit" ng-click="allCourses();">All Registered Courses</button>
+            <button type="submit" ng-click="addCourse();">Add Course</button><p> 
+            Active Courses
+           <input type="text" ng-model="nameFilter" class="form-control" placeholder="Search..."/><p>
+           <div class="well">
+              <table>
+                <tbody>
+                  <tr ng-repeat="course in courseList | filter:nameFilter">
+                    <td>{{$index + 1}}</td>
+                    <td>     
+                      <a href ng-click="courseInfo()">{{course.courseName}}</a href>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </tab>
+        <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
+          {{tab.content}}
+        </tab>
+        <tab heading="TA Applicants"><p><p>
+          <section ng-controller="PopulateController">              
+            Applicants<p>
+            <input type="text" ng-model="nameFilter" class="form-control" placeholder="Search..."/><p>              
+            <div class="well">
+              <table>
+                <tbody>
+                  <tr ng-repeat="ta in applicantList | filter:nameFilter">
+                    <td>{{$index + 1}}</td>
+                    <td>     
+                      <a href ng-click="userInfo(ta.username)">{{ta.displayName}}</a href>
+                        {{ta.gpa}}&nbsp;
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Collapsible Group Item #1
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Collapsible Group Item #2
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Collapsible Group Item #3
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </tab>
+        <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
+          {{tab.content}}
+        </tab>
+      </tabset>
+
+    </DIV>
   </DIV>
 </section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../../../../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="../transition.js"></script> 
