@@ -56,6 +56,7 @@ angular.module('users').controller('SettingsController', ['$window','$scope', '$
     			      $scope.error = status;
     	    	});
 				$window.location.href = '/#!/settings';
+				$window.location.reload();
 			} else {
 				$scope.submitted = true;
 			}
