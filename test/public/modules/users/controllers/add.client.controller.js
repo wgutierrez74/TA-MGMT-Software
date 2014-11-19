@@ -14,6 +14,11 @@ angular.module('users').controller('AddController', ['$window','$scope', '$http'
 			//$window.location.href = '/#!/advisorView/courses';
 		};
 
+		//redirects user to the hashed path
+		$scope.goNext = function(hash){
+			$location.path(hash);
+		};
+
 		$scope.back = function(){
 			$location.path('/advisorView/courses');
 		};		
