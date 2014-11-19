@@ -22,6 +22,7 @@ console.log(req.body);
 	var user = new User(req.body);
 	var message = null;
 
+<<<<<<< HEAD
 	// Add missing user fields
 	user.provider = 'local';
 	user.displayName = user.firstName + ' ' + user.lastName;
@@ -41,17 +42,50 @@ console.log(req.body);
 			// Remove sensitive data before login
 			user.password = undefined;
 			user.salt = undefined;
+=======
+	//Check to see if user has filled the required fields
+	if(user.username !== '' && user.password!== '' && user.firstName !== '' && user.lastName !== '')
+	{
 
-			req.login(user, function(err) {
-				if (err) {
-					console.log('login error');
-					res.status(400).send(err);
-				} else {
-					res.jsonp(user);
-				}
-			});
-		}
-	});
+		// Add missing user fields
+		user.provider = 'local';
+		user.displayName = user.firstName + ' ' + user.lastName;
+		user.student = true;
+		//user.faculty = true;
+		//user.admin = true;
+		//user.superuser = true;
+
+		// Then save the user
+		user.save(function(err) {
+			if (err) {
+				console.log('save error');
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				// Remove sensitive data before login
+				user.password = undefined;
+				user.salt = undefined;
+
+				req.login(user, function(err) {
+					if (err) {
+						console.log('login error');
+						res.status(400).send(err);
+					} else {
+						res.jsonp(user);
+					}
+				});
+			}
+		});
+	}
+	//One or more fields was not filled
+	else{
+		return res.status(400).send({
+			message: 'Must fill all fields'
+		});
+	}
+>>>>>>> origin/master
+
 };
 
 /**
