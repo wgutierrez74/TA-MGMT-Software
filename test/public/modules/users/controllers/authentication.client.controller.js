@@ -13,7 +13,15 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				$scope.authentication.user = response;
 
 				// And redirect to the index page
-				$location.path('/settings');
+				if($scope.authentication.user.admin){
+					$location.path('/advisorView');
+				}
+				else if($scope.authentication.user.faculty){
+					$location.path('/faculty');
+				}
+				else{
+					$location.path('/settings');
+				}
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
