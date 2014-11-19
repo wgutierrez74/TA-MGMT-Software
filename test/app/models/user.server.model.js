@@ -172,6 +172,10 @@ var UserSchema = new Schema({
     SUser: {
     	type: Boolean,
     	default: false
+    },
+    recommended: {
+    	type: [String],
+    	default: []
     }
 });
 

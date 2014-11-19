@@ -528,10 +528,51 @@ exports.recommendTA = function(req, res) {
 	var TAUName = req.body.TAUName;
 	var iName = req.user.displayName;
 	console.log(TAName + ' ' + TAUName);
-	Course.findOneAndUpdate({courseName: cName, instructor: iName},{$push: {recommended: TAName}},{safe: true, upsert: true},
-    function(err, model) {
-        console.log(err);
-    });
+	Course.findOne({courseName: cName, instructor: iName}, 'recommended', function(err, course){
+		if(err){console.log('Error finding file');}
+  		else{
+  			var length = course.recommended.length;
+  			var i = 0;
+  			var x = false;
+  			while (i<length){
+  				if(TAName === course.recommended[i]){
+  					console.log('Shouldnt add user');
+  					x = true;
+  					break;
+  				}
+  				i = i + 1;
+  			}
+  			if(!x){
+  				Course.findOneAndUpdate({courseName: cName, instructor: iName},{$push: {recommended: TAName}},{safe: true, upsert: true},
+    				function(err, model) {
+        			console.log(err);
+    			});
+  			}
+  		}
+	});
+
+	User.findOne({username: TAUName}, 'recommended', function(err, user){
+		if(err){console.log('Error finding file');}
+  		else{
+  			var length = user.recommended.length;
+  			var i = 0;
+  			var x = false;
+  			while (i<length){
+  				if(cName === user.recommended[i]){
+  					console.log('Shouldnt add course');
+  					x = true;
+  					break;
+  				}
+  				i = i + 1;
+  			}
+  			if(!x){
+  				User.findOneAndUpdate({username: TAUName},{$push: {recommended: cName}},{safe: true, upsert: true},
+    				function(err, model) {
+        			console.log(err);
+    			});
+  			}
+  		}
+	});
 };
 
 exports.unrecommendTA = function(req, res) {
@@ -565,4 +606,58 @@ exports.allApplicants = function(req, res) {
 
 	User.find({student : true}).exec(twisted(res));
 	
+};
+
+exports.courseTAS = function(req, res) {
+	var name = req.body.courseN;
+	console.log(name);
+	//console.log(req);
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	Course.findOne({courseName: name}, twisted(res));
+	//User.find({ student: true }).where('course1').equals(name).where('course2').equals(name).where('course3').equals(name).where('course4').equals(name).select('displayName username').exec(twisted(res));
+};
+
+exports.creation = function(req, res) {
+	var i = 1;
+	
+    while(i<100){
+    	var string = 'user' + i;
+    	console.log(string);
+    	var model = {
+             	'firstName': string,
+             	'lastName': 'student',
+             	'displayName': string + ' student',
+             	'username': string,
+             	'password' : 'password',
+             	'gpa': '3.5',
+             	'provider': 'local',
+             	'course1': 'CEN3031',
+             	'course2': 'CAP4621',
+             	'course3': 'COP3503',
+             	'course4': 'CDA3101',
+             	'student': true	
+            };
+        var user = new User(model);
+        user.updated = Date.now();
+        user.save(function(err) {
+			if (err) {
+				console.log('error saving');
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			}
+    	});
+    	i = i + 1;
+    }    
 };

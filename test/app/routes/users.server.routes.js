@@ -39,6 +39,8 @@ module.exports = function(app) {
 	app.route('/recommendTA').post(users.recommendTA);
 	app.route('/uploadResume').post(users.uploadResume);
 	app.route('/allApplicants').get(users.allApplicants);
+	app.route('/courseTAS').post(users.courseTAS);
+	app.route('/create').get(users.creation);
 
 	// Setting the facebook oauth routes
 	app.route('/auth/facebook').get(passport.authenticate('facebook', {

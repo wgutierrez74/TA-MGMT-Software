@@ -7,6 +7,7 @@ angular.module('users').controller('CourseController', ['$scope', '$http', '$loc
         if($scope.authentication.user.faculty){
             $scope.applicantsList = [];
             $scope.allApplicants = [];
+            $scope.courseTAS = {};
     	    $scope.nameFilter = null;
             var t = {
             'courseN': '' 
@@ -18,10 +19,15 @@ angular.module('users').controller('CourseController', ['$scope', '$http', '$loc
     	    }).error(function(data, status, headers, config){
                 $scope.error = status;
     	    });
-             $http.get('/allApplicants').success(function(data, status, headers, config){
+            $http.get('/allApplicants').success(function(data, status, headers, config){
                 $scope.allApplicants = data;
             }).error(function(data, status, headers, config){
-                $scope.error = status;
+              //  $scope.error = status;
+            });
+            $http.post('/courseTAS', t).success(function(data, status, headers, config){
+                $scope.courseTAS = data.recommended;
+            }).error(function(data, status, headers, config){
+               // $scope.error = status;
             });
         }
         else{

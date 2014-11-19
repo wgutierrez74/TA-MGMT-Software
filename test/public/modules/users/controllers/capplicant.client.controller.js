@@ -29,16 +29,16 @@ angular.module('users').controller('CApplicantController', ['$scope','$http', '$
 
         $scope.recommend = function(){
             var w = {
-            'courseN': '' ,
-            'Name' : '',
-            'TAUname' : ''
+                'courseN': '' ,
+                'Name' : '',
+                'TAUname' : ''
             };
             w.courseN = courseservice.getProducts();
             w.Name = $scope.ta.displayName;
             w.TAUName = $scope.ta.username;
             $http.post('/recommendTA', w).success(function(data, status, headers, config){
               $scope.success = 'TA ' + $scope.ta.displayname + ' is recommended for ' + courseservice.getProducts();
-        //khj
+        
            }).error(function(response){
                 $scope.error = response;
            });

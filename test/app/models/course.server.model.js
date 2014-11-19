@@ -29,7 +29,8 @@ var CourseSchema = new Schema({
 		index: true
 	},
 	recommended: {
-		type: [String]
+		type: [String],
+		default: []
 	},
 	salt: {
 		type: String

@@ -12,6 +12,14 @@ angular.module('users').controller('SubmitController', ['$window','$scope', '$ht
 			$location.path('/settings/profile');
 		};
 
+		$scope.create = function() {
+			$http.get('/create').success(function(data, status, headers, config){
+                
+    	    }).error(function(data, status, headers, config){
+                
+    	    });
+		};
+
 		
 
 		
