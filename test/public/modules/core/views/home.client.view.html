@@ -56,8 +56,8 @@
                        <div class="modal-footer">
                          <div class="text-center form-group">
 
-                            <button type="submit"  class="btn btn-large btn-primary">Sign up</button>
-                            <button type="reset" button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                            <button type="submit"  id='registerSubmit' class="btn btn-large btn-primary">Sign up</button>
+                            <button type="reset" button class="btn btn-warning" id='registerCancel' ng-click="cancel()">Cancel</button>
 
                          </div>
                          <div data-ng-show="error" class="text-center text-danger">
@@ -70,7 +70,7 @@
               </div>
             </script> 
             
-            <button class="btn btn-large btn-primary" ng-click="open('sm')" style="margin-top: -26px;">Register Now</button>&emsp;
+            <button class="btn btn-large btn-primary" id="registerButton" ng-click="open('sm')" style="margin-top: -26px;">Register Now</button>&emsp;
                   <!--<div ng-show="selected">Selection from a modal: {{ selected }}</div>-->
           </div></TD>
           <TD><div ng-controller="ModalDemoCtrl2">
