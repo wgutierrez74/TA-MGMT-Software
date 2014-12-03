@@ -523,12 +523,16 @@ exports.removeCourse = function(req, res) {
 };
 
 exports.recommendTA = function(req, res) {
+	console.log(req.body);
 	var cName = req.body.courseN;
 	var TAName = req.body.Name;
 	var TAUName = req.body.TAUName;
+	var research = req.body.research;
+	var gpa = req.body.gpa;
+	console.log(req.body.gpa);
 	var iName = req.user.displayName;
 	console.log(TAName + ' ' + TAUName);
-	Course.findOne({courseName: cName, instructor: iName}, 'recommended', function(err, course){
+	Course.findOne({courseName: cName, instructor: iName}, function(err, course){
 		if(err){console.log('Error finding file');}
   		else{
   			var length = course.recommended.length;
@@ -547,11 +551,23 @@ exports.recommendTA = function(req, res) {
     				function(err, model) {
         			console.log(err);
     			});
+    			Course.findOneAndUpdate({courseName: cName, instructor: iName},{$push: {recommendedUsers: TAUName}},{safe: true, upsert: true},
+    				function(err, model) {
+        			console.log(err);
+    			});
+    			Course.findOneAndUpdate({courseName: cName, instructor: iName},{$push: {recommendedGPA: gpa}},{safe: true, upsert: true},
+    				function(err, model) {
+        			console.log(err);
+    			});
+    			Course.findOneAndUpdate({courseName: cName, instructor: iName},{$push: {recommendedResearch: research}},{safe: true, upsert: true},
+    				function(err, model) {
+        			console.log(err);
+    			});
   			}
   		}
 	});
 
-	User.findOne({username: TAUName}, 'recommended', function(err, user){
+	User.findOne({username: TAUName}, function(err, user){
 		if(err){console.log('Error finding file');}
   		else{
   			var length = user.recommended.length;
@@ -570,6 +586,7 @@ exports.recommendTA = function(req, res) {
     				function(err, model) {
         			console.log(err);
     			});
+    			
   			}
   		}
 	});
@@ -625,7 +642,6 @@ exports.courseTAS = function(req, res) {
     };
 
 	Course.findOne({courseName: name}, twisted(res));
-	//User.find({ student: true }).where('course1').equals(name).where('course2').equals(name).where('course3').equals(name).where('course4').equals(name).select('displayName username').exec(twisted(res));
 };
 
 exports.creation = function(req, res) {
@@ -634,20 +650,37 @@ exports.creation = function(req, res) {
     while(i<100){
     	var string = 'user' + i;
     	console.log(string);
-    	var model = {
+    	var model;
+    	if(i<51){
+    		model = {
              	'firstName': string,
              	'lastName': 'student',
              	'displayName': string + ' student',
              	'username': string,
              	'password' : 'password',
+             	'researchField' : 'Everything',
              	'gpa': '3.5',
              	'provider': 'local',
              	'course1': 'CEN3031',
-             	'course2': 'CAP4621',
-             	'course3': 'COP3503',
-             	'course4': 'CDA3101',
+             	'course2': 'CDA3101',
              	'student': true	
             };
+        }
+        else{
+        	model = {
+             	'firstName': string,
+             	'lastName': 'student',
+             	'displayName': string + ' student',
+             	'username': string,
+             	'password' : 'password',
+             	'researchField' : 'Everything',
+             	'gpa': '3.5',
+             	'provider': 'local',
+             	'course1': 'COP3503',
+             	'course2': 'CAP4621',
+             	'student': true
+            };
+        }
         var user = new User(model);
         user.updated = Date.now();
         user.save(function(err) {
@@ -659,5 +692,88 @@ exports.creation = function(req, res) {
 			}
     	});
     	i = i + 1;
-    }    
+    }
+
+    var modal;
+    	modal = {
+            'firstName': 'Alin',
+            'lastName': 'Dobra',
+            'displayName': 'Alin Dobra',
+            'username': 'Faculty1',
+            'password' : 'password',
+            'provider': 'local',
+            'faculty': true,
+            'admin' : false	
+        };
+        
+    var user1 = new User(modal);
+    user1.updated = Date.now();
+    user1.save(function(err) {
+		if (err) {
+			console.log('error saving');
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		}
+    });
+   
+  	modal.firstName = 'Rong';
+  	modal.lastName = 'Zhang';
+  	modal.username = 'Faculty2';
+  	modal.displayName = 'Rong Zhang';
+
+  	var user3 = new User(modal);
+    user3.updated = Date.now();
+    user3.save(function(err) {
+		if (err) {
+			console.log('error saving');
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		}
+    }); 
+
+    modal.firstName = '';
+  	modal.lastName = '';
+  	modal.username = 'Advisor1';
+  	modal.displayName = '';
+  	modal.faculty = false;
+  	modal.admin = true;
+  	
+
+  	var user2 = new User(modal);
+    user2.updated = Date.now();
+    user2.save(function(err) {
+		if (err) {
+			console.log('error saving');
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		}
+    });   
+};
+
+exports.removeChosen = function(req, res){
+		console.log(req.body);
+		console.log(req.body.recommended[0]);	
+		return res.status(400).send({
+				message: 'Test'
+		});
+
+	// var TAUName = req.body.TAUName;
+	// var pos = req.body.pos;
+	// var course = req.body.course;
+	// var instructorName = req.body.instructor;
+	// Course.findOneAndUpdate({courseName: cName, instructor: iName},{$pull: {recommended: TAName}},{safe: true, upsert: true},
+ //    function(err, model) {
+ //        console.log(err);
+ //    });
+ //    Course.findOneAndUpdate({courseName: cName, instructor: iName},{$pull: {recommended: TAName}},{safe: true, upsert: true},
+ //    function(err, model) {
+ //        console.log(err);
+ //    });	
+	
+
+
+
 };

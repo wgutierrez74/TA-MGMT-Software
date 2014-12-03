@@ -25,7 +25,7 @@ angular.module('users').controller('CourseController', ['$scope', '$http', '$loc
               //  $scope.error = status;
             });
             $http.post('/courseTAS', t).success(function(data, status, headers, config){
-                $scope.courseTAS = data.recommended;
+                $scope.courseTAS = data;
             }).error(function(data, status, headers, config){
                // $scope.error = status;
             });
@@ -43,6 +43,10 @@ angular.module('users').controller('CourseController', ['$scope', '$http', '$loc
 
         $scope.back = function(){
             $location.path('/faculty');
+        };
+
+         $scope.manage = function(){
+            $location.path('/faculty/course/manage');
         };
 
   }]);

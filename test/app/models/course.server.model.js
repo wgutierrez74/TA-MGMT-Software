@@ -32,6 +32,18 @@ var CourseSchema = new Schema({
 		type: [String],
 		default: []
 	},
+	recommendedUsers: {
+		type: [String],
+		default: []
+	},
+	recommendedGPA: {
+		type: [Number],
+		default: []
+	},
+	recommendedResearch: {
+		type: [String],
+		default:[]
+	},
 	salt: {
 		type: String
 	},

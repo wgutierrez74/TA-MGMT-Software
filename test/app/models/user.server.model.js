@@ -165,6 +165,14 @@ var UserSchema = new Schema({
     	type: Boolean,
     	default: false
     },
+    courses: {
+    	type: [String],
+    	default: []
+    },
+    courseGrades:{
+    	type: [String],
+    	default: []
+    },
     submitted: {
     	type: Boolean,
     	default: false

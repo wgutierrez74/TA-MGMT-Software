@@ -33,6 +33,26 @@
 							<div class="col-md-8"><input type="text" id="gpa" name="gpa" class="form-control" data-ng-model="user.gpa" placeholder=" Fill in GPA"></div>
 						</div>
 						<div class="form-group"  >
+							<label for="courses" class="control-label col-md-2">Courses Taken</label>
+							<div>
+								<table>
+                      				<tbody>
+                        				<tr ng-repeat="taken in user.courses track by $index | 	filter:nameFilter">     
+                          					<td>    
+                            					{{taken}}&nbsp;{{user.courseGrades[$index]}}   <a href ng-click="remove(taken, $index)"> Remove</a href>
+                          					</td>
+                        				</tr>
+                      				</tbody>
+                      			</table>
+							</div>
+							<div class="col-md-8"><input type="text" id="courses" name="courses" class="form-control" data-ng-model="temp.course" placeholder="ex. CEN3031"><p><input type="text" style="width: 35px" id="courseGrades" name="courseGrades" class="form-control" data-ng-model="temp.courseGrade" placeholder="A, B-"></div>
+							<a href ng-click="add()">Add course {{temp.course}}</a href>
+							<div>
+								{{courseError}}
+							</div>
+
+						</div>
+						<div class="form-group"  >
 							<label for="abilities" class="control-label col-md-2">Abilities</label>
 							<div class="col-md-8"><input type="text" id="abilities" name="abilities" class="form-control" data-ng-model="user.abilities" placeholder="Fill in abilities"></div>
 						</div>
@@ -48,6 +68,7 @@
 							<label for="resumeUpload" class="control-label col-md-2">Resume</label>
 							<form name="uploadForm" action="/uploadResume" method="post" enctype="multipart/form-data">
 							<div class="col-md-8"><input type="file" id="resumeUpload" name="resumeUpload" class="form-data" data-ng-model="user.resumeUpload"></div>
+
 
 						</div>
 						<p><hr><h4 class="text-left">Enter which courses you would like to submit this application for: </h4>

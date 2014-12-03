@@ -20,7 +20,7 @@ angular.module('users').controller('AddController', ['$window','$scope', '$http'
 		};
 
 		$scope.back = function(){
-			$location.path('/advisorView/courses');
+			$location.path('/advisorView');
 		};		
 		
 	}

@@ -31,11 +31,15 @@ angular.module('users').controller('CApplicantController', ['$scope','$http', '$
             var w = {
                 'courseN': '' ,
                 'Name' : '',
-                'TAUname' : ''
+                'TAUname' : '',
+                'research' : '',
+                'gpa' : ''
             };
             w.courseN = courseservice.getProducts();
             w.Name = $scope.ta.displayName;
             w.TAUName = $scope.ta.username;
+            w.research = $scope.ta.researchField;
+            w.gpa = $scope.ta.gpa;
             $http.post('/recommendTA', w).success(function(data, status, headers, config){
               $scope.success = 'TA ' + $scope.ta.displayname + ' is recommended for ' + courseservice.getProducts();
         

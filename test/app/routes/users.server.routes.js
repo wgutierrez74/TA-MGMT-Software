@@ -31,7 +31,7 @@ module.exports = function(app) {
 	app.route('/applicant').post(users.applicantInfo);
 	app.route('/courseTAList').post(users.coursePopulate);
 	app.route('/addCourse').post(users.addCourse);
-	//app.route('/capplicant').post(users.capplicantInfo);
+	
 	app.route('/verifyApplicant').post(users.verifyUser);
 	app.route('/removeCourse').post(users.removeCourse);
 	app.route('/instructorCoursePopulate').post(users.instructorCourses);
@@ -40,6 +40,7 @@ module.exports = function(app) {
 	app.route('/allApplicants').get(users.allApplicants);
 	app.route('/courseTAS').post(users.courseTAS);
 	app.route('/create').get(users.creation);
+	app.route('/removeChosen').post(users.removeChosen);
 
 	
 

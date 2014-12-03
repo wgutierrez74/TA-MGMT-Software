@@ -1,0 +1,29 @@
+<section ng-controller="TAManageController">
+  <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+  <!--above line is the code for the sign out header-->
+  <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+        <div class="container">
+          <h2>Welcome/Title</div></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
+      </div>
+    </div>
+    <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;padding-right: 40px;padding-left: 40px;">
+       <div class="container">
+          <div class="col-md-6">
+              <table>
+                <tbody>
+                  <tr ng-repeat="ta in courseS.recommended track by $index">     
+                    <td>    
+                      {{ta}}&nbsp;{{courseChosen.recommendedGPA[$index]}}&nbsp;{{courseChosen.recommendedResearch[$index]}}&nbsp;&nbsp; <a href ng-click="userInfo($index)">More Info</a href>&nbsp;<a href ng-click="removeTA($index)">Remove</a href>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            {{test}}
+          </div>
+          <div>
+            {{test}}
+          </div>
+        </div>        
+    </div>
+  </section>

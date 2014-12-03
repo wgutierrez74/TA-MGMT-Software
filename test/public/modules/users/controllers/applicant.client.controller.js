@@ -20,7 +20,7 @@ angular.module('users').controller('ApplicantController', ['$scope', '$http', '$
         }
 
         $scope.back = function(){
-            $location.path('/advisorView/applicants');
+            $location.path('/advisorView');
         };
 
         $scope.verify = function(ta){
@@ -33,7 +33,7 @@ angular.module('users').controller('ApplicantController', ['$scope', '$http', '$
             }).error(function(response){
                 $scope.error = response;
             });
-            $location.path('/advisorView/applicants');
+            $location.path('/advisorView');
         };
 
 

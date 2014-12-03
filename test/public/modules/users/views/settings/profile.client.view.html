@@ -35,6 +35,20 @@
 							<div class="col-md-8"><input type="text" id="gpa" name="gpa" class="form-control" data-ng-model="user.gpa" placeholder=" Fill in GPA" readonly></div>
 						</div>
 						<div class="form-group"  >
+							<label for="courses" class="control-label col-md-2">Courses Taken</label>
+							<div>
+								<table>
+                      				<tbody>
+                        				<tr ng-repeat="taken in user.courses track by $index | 	filter:nameFilter">     
+                          					<td>    
+                            					{{taken}}&nbsp;{{user.courseGrades[$index]}} 
+                          					</td>
+                        				</tr>
+                      				</tbody>
+                      			</table>
+							</div>
+						</div>	
+						<div class="form-group"  >
 							<label for="abilities" class="control-label col-md-2">Abilities</label>
 							<div class="col-md-8"><input type="text" id="abilities" name="abilities" class="form-control" data-ng-model="user.abilities" placeholder="Fill in abilities" readonly></div>
 						</div>
@@ -71,7 +85,7 @@
 						</div>
 						<div class="text-center form-group">
 						 <button type="submit" class="btn btn-large btn-primary" ng-click="editProfile();" style="margin-top: 10px;">Edit Your Application</button>
-						  <button type="submit" class="btn btn-large btn-primary" ng-click="create();" style="margin-top: 10px;">Creation</button>
+						  <button type="submit" class="btn btn-large btn-primary" ng-click="create();" style="margin-top: 10px;">Creation</button> 
 						 </div>
 					</fieldset>
 				</form>

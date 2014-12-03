@@ -1,21 +1,52 @@
 User Stories:
 
-1. As a StudentUser I want to update my profile
+1. As a StudentUser I want to change my info and update my profile
 2. As an AdminUser I want to verify unverified users - GPA
-3. As a FacultyUser I want to Add a course that I'm teaching that semester
+3. As a AdminUser I want to Add a course to the system
 4. As a FacultyUser I want to click on one of my listed courses and display StudentUsers that want to TA for that selected course
-5. As a FacultyUser I want to I want to remove a course I'm currently teaching
-6. As a SUser I want to create a FacultyUser
-7. As a SUser I want to create an AdminUser
+5. As a FacultyUser I want to I want to recommend ta for a course I'm currently teaching
+6. As a faculty user I want to see the courses a particular TA is recommended for you.
+7. As a facultyuser I want to see only the TA's I recommended for my course
+7. As a SUser I want to create a FacultyUser
+8. As a SUser I want to create an AdminUser
+9. As a AdminUser 
 
 
 Not Implemented:
-8. As a StudentUser I want to upload and save a PDF
-9. As an AdminUser I want to verify unverified users - Speech Test
-10. As a Faculty User I want to recommend TA's for my course which will be displayed under the particular course name;
-11. As a FacultyUser I want to remove a selected TA from a particular course 
-12. 
-13.
-14.
-15.
-16.
+1. As a StudentUser I want to upload and save a PDF
+2. As an AdminUser I want to verify unverified users - Speech Test
+3. As a FacultyUser I want to switch the order of the TA's I want to reccommend
+4. As a FacultyUser I want to remove(unrecommend) a selected TA from a particular course 
+5. As an AdminUser I want to see all registered courses
+6.
+7.
+8.
+9.
+10.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Karma tests - end-to-end testing

@@ -17,16 +17,20 @@
                   <div class="well">
                     <table>
                       <tbody>
-                        <tr ng-repeat="ta in courseTAS track by $index | filter:nameFilter">     
+                        <tr ng-repeat="ta in courseTAS.recommended track by $index | filter:nameFilter">     
                           <td>    
-                            {{ta}}
+                            {{ta}}&nbsp;{{courseTAS.recommendedGPA[$index]}}&nbsp;{{courseTAS.recommendedResearch[$index]}}
                           </td>
                         </tr>
                       </tbody>
+                      <tbody>
+                      </tbody>
                     </table>
                   </div>
+                  <button type="submit" ng-click="manage();" class="btn btn-large btn-primary">Manage TA's</button>
                 </tab>
               </div>        
+
               <div class="col-md-6">
                 <tabset>
                   <tab heading="{{show}} TA Applicants"><p><p>
@@ -41,7 +45,7 @@
                             </tr>
                           </tbody>
                           <tbody>
-                              {{}}
+                            
                           </tbody>
                         </table>
                       </div>

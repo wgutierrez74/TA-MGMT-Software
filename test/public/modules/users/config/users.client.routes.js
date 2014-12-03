@@ -21,6 +21,10 @@ angular.module('users').config(['$stateProvider',
 			url: '/faculty/course',
 			templateUrl: 'modules/users/views/facultyCourseView.client.view.html'
 		}).
+		state('facultyCourseManage', {
+			url: '/faculty/course/manage',
+			templateUrl: 'modules/users/views/facultyTAManage.client.view.html'
+		}).
 		state('facultyCourseApplicant', {
 			url: '/faculty/course/applicant',
 			templateUrl: 'modules/users/views/facultyCourseApplicant.client.view.html'
