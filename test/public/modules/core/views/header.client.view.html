@@ -39,11 +39,11 @@
 				<a href="/#!/settings/accounts">Manage Social Accounts</a>
 			</li>-->
 			<li data-ng-show="authentication.user.provider === 'local'">
-				<a href="/#!/settings/password">Change Password</a>
+				<a href="/#!/settings/password" id='changePasswordButton'>Change Password</a>
 			</li>
 			
 			<li>
-				<a href="/auth/signout">Signout</a>
+				<a href="/auth/signout" id='signOutButton'>Signout</a>
 			</li>
 		</ul>
 		<!--<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
