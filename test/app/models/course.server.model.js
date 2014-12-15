@@ -81,6 +81,6 @@ CourseSchema.pre('save', function(next) {
 	next();
 });
 
-CourseSchema.index({ courseName: 1, faculty: 1 }, { unique: true });
+CourseSchema.index({ courseName: 1, instructor: 1}, { unique: true });
 
 mongoose.model('Course', CourseSchema);

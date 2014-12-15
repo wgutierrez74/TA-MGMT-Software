@@ -82,6 +82,10 @@ angular.module('users').config(['$stateProvider',
 			url: '/advisorView/courses/add' ,
 			templateUrl: 'modules/users/views/courseAdd.client.view.html'
 		}).
+		state('advisorView-courses-info', {
+			url: '/advisorView/courses/info' ,
+			templateUrl: 'module/users/views/courseInfo.client.view.html'
+		}).
 		state('advisorView-ta', {
 			url: '/advisorView/applicants/ta' ,
 			templateUrl: 'modules/users/views/applicantView.client.view.html'

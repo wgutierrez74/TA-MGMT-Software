@@ -224,7 +224,7 @@ exports.populateCourses = function(req, res) {
         };
     };
 
-	Course.find({active: true}, 'courseName', twisted(res));
+	Course.find({active: true}, 'courseName instructor', twisted(res));
 	
 };
 

@@ -88,15 +88,17 @@
               <table>
                 <tbody>
                   <tr ng-repeat="course in courseList | filter:nameFilter">
-                    <td>{{$index + 1}}</td>
+                    <td>{{$index + 1}}</td> 
                     <td>     
-                      <a href ng-click="courseInfo()">{{course.courseName}}</a href>
+                      <a href ng-click="courseInfo(course)">{{course.courseName}}</a href>
+                    </td>
+                    <td>     {{course.instructor}}
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
-          </section>
+          </section> 
         </tab>
         <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
           {{tab.content}}

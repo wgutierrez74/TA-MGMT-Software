@@ -1,30 +1,46 @@
 <section ng-controller="ACourseController">
   <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-  <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
-    <div class="container">
-      <h2><div align="center">Welcome/Title</div></h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
-    </div>
-  </div>
-  <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
-    <div class="container">
-      <button type="submit" ng-click="allCourses();">All Registered Courses</button>
-      <button type="submit" ng-click="addCourse();">Add Course</button><p> 
-      <input type="text" ng-model="nameFilter" placeholder="Search..."/>
-      <table>
+  <div>
+    <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+      <h2><div align="center">{{currentCourse.courseName}}
+    </div></h2>
+    <table>
         <thead>
-          <tr><th colspan="4">Active Courses</th></tr>
+          <tr><th colspan="4">Status</th></tr>
+          <td>{{isactive}}
+          </td>
+          <tr><th colspan="4">Instructor</th></tr>
+          <td>{{currentCourse.instructor}}
+          </td>
+          <tr><th colspan="4">TA Applicants</th></tr>
+          <td>Applied TA
+          </td>
         </thead>
-        <tbody>
-          <tr ng-repeat="course in courseList | filter:nameFilter">
-            <td>{{$index + 1}}</td>
-            <td>     
-              <a href ng-click="courseInfo()">{{course.courseName}}</a href>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <button type="submit" ng-click="back();">Back</button> 
-    </div>
+    </table>
   </div>
-</section>
+</div>
+  <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+    <section ng-controller="ACourseController"> 
+      <div class="container">
+        <button type="submit" ng-click="allCourses();">All Registered Courses</button>
+        <button type="submit" ng-click="addCourse();">Add Course</button><p> 
+              Active Courses
+        <input type="text" ng-model="nameFilter" class="form-control" placeholder="Search..."/><p>
+        <div class="well">
+          <table>
+            <tbody>
+              <tr ng-repeat="course in courseList | filter:nameFilter">
+                <td>{{$index + 1}}</td> 
+                <td>     
+                  <a href ng-click="courseInfo(course)" onClick="history.go(0)" VALUE="Refresh">{{course.courseName}}</a href>
+                </td>
+                <td>     {{course.instructor}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div> 
+    </section>
+  </div>
+</section>  
