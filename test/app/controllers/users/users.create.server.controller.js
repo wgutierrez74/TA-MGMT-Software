@@ -119,9 +119,9 @@ exports.coursePopulate = function(req, res) {
 	//User.find({ student: true }).where('course1').equals(name).where('course2').equals(name).where('course3').equals(name).where('course4').equals(name).select('displayName username').exec(twisted(res));
 };
 
+
 exports.addCourse = function(req, res) {
 	var course = req.body.courseName;
-
 	if(course === undefined){
 		console.log('Course is blank');
 		res.status(400).send({
@@ -130,6 +130,17 @@ exports.addCourse = function(req, res) {
 		console.log('returned properly');
 		return;
 	}
+
+	var instructor = req.body.instructor;
+	if(instructor === undefined){
+		console.log('Instructor is blank');
+		res.status(400).send({
+			message: 'Instructor left blank'
+		});
+		console.log('returned properly');
+		return;
+	}
+
 	console.log(course.length);
 	var i = 0;
 	if(course.length < 7){
@@ -164,13 +175,13 @@ exports.addCourse = function(req, res) {
 			}
 		}
 		i = i + 1;
-	}
-		
+	}	
 	var courseNew = new Course(req.body);
 	courseNew.provider = 'local';
 	courseNew.updated = Date.now();
 	courseNew.active = true;
-
+	courseNew.instructor = instructor;
+	console.log(courseNew.instructor);
 	courseNew.save(function(err) {
 		if (err) {
 			console.log('save error');
