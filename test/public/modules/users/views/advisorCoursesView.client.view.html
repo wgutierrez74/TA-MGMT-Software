@@ -5,12 +5,14 @@
       <h2><div align="center">{{currentCourse.courseName}}
     </div></h2>
     <table>
+        <button type="submit" ng-click="updateCourseStatus(currentCourse); updatePage(currentCourse)"> {{buttonstatus}}</button>
         <thead>
           <tr><th colspan="4">Status</th></tr>
           <td>{{isactive}}
           </td>
           <tr><th colspan="4">Instructor</th></tr>
           <td>{{currentCourse.instructor}}
+            <br>
           </td>
           <tr><th colspan="4">TA Applicants</th></tr>
           <td>Applied TA
@@ -20,7 +22,6 @@
   </div>
 </div>
   <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
-    <section ng-controller="ACourseController"> 
       <div class="container">
         <button type="submit" ng-click="allCourses();">All Registered Courses</button>
         <button type="submit" ng-click="addCourse();">Add Course</button><p> 
@@ -32,15 +33,14 @@
               <tr ng-repeat="course in courseList | filter:nameFilter">
                 <td>{{$index + 1}}</td> 
                 <td>     
-                  <a href ng-click="courseInfo(course)" onClick="history.go(0)" VALUE="Refresh">{{course.courseName}}</a href>
+                  <a href ng-click="updatePage(course);"> {{course.courseName}}</a href>
                 </td>
-                <td>     {{course.instructor}}
+                <td>     {{course.instructor}} 
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div> 
-    </section>
   </div>
 </section>  

@@ -26,6 +26,9 @@ module.exports = function(app) {
 
 	app.route('/populate').get(users.populate);
 	app.route('/populateActiveCourses').get(users.populateCourses);
+	app.route('/populateAllCourses').get(users.populateAllCourses);
+	app.route('/deactivateCourse').post(users.deactivateCourse);
+	app.route('/activateCourse').post(users.activateCourse);
 	app.route('/createAdmin').post(users.createAdmin);
 	app.route('/createFaculty').post(users.createFaculty);
 	app.route('/applicant').post(users.applicantInfo);

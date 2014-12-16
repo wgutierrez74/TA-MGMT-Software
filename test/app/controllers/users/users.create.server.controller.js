@@ -228,6 +228,39 @@ exports.populateCourses = function(req, res) {
 	
 };
 
+exports.populateAllCourses = function(req, res) {
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	Course.find({}, 'courseName instructor', twisted(res));	
+};
+
+exports.deactivateCourse = function(req, res) {
+	Course.findOne({courseName: req.body.courseName}, function(err, course) {
+		console.log(course.active);
+		course.active = false;
+		console.log(course.active);
+		course.save();
+	});
+};
+
+exports.activateCourse = function(req, res) {
+	Course.findOne({courseName: req.body.courseName}, function(err, course) {
+		console.log(course.active);
+		course.active = true;
+		console.log(course.active);
+		course.save();
+	});
+};
 exports.instructorCourses = function(req, res) {
 	console.log(req.user);
 	console.log(req.body);

@@ -8,15 +8,17 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
     	    $scope.nameFilter = null;
             $scope.currentCourse = null;
             $scope.currentCourse=myservice.get();
-            var courseinfo = {
-            'active': 'Defualt' 
-            };
-            $scope.isactive = 'Default';
             if($scope.currentCourse.active===true)
-                $scope.isactive = 'Active';//courseinfo.active = 'Active';
+            {
+                $scope.isactive = 'Active';
+                $scope.buttonstatus ='Deactivate Course';
+            }
             else
-                $scope.isactive = 'Inactive';//courseinfo.active ='Inactive';
-            $http.get('/populateActiveCourses').success(function(data, status, headers, config){
+            {
+                $scope.isactive = 'Inactive';
+                $scope.buttonstatus ='Activate Course';
+            }
+            $http.get('/populateAllCourses').success(function(data, status, headers, config){
                 $scope.courseList = data;
     	    }).error(function(data, status, headers, config){
     		      $scope.error = status;
@@ -25,14 +27,51 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
         else{
             $location.path('/badPermission');
         }
+ 
+        $scope.updateCourseStatus = function(course)
+        {
+            if($scope.currentCourse.active===true)
+            {
+                $http.post('/deactivateCourse', course).success(function(response){                 
+                }).error(function(response) {
+                    $scope.error = response.message;
+                });
+                $scope.currentCourse.active=false;
+            }
+            else
+            {
+                $http.post('/activateCourse', course).success(function(response){
+                    myservice.set(course);
+                    $scope.currentCourse = myservice.get();
+                    
+                }).error(function(response) {
+                    $scope.error = response.message;
+                });
+                $scope.currentCourse.active=true;
+            }   
+        };
 
-    
         $scope.courseInfo = function(course){
             myservice.set(course);
-            //cN.courseName = name;
-            $scope.currentCourse = myservice.get(course);
+            $scope.currentCourse = course;
             $location.path('/advisorView/courses');
-           //$scope.currentCourse = myservice.get(course);
+        };
+
+        //Does not properly reflect course status until updateCourseStatus is called
+        //Needs to be fixed
+        $scope.updatePage = function(course){
+            myservice.set(course);
+            $scope.currentCourse=myservice.get();//=course;
+            if($scope.currentCourse.active===true)
+            {
+                $scope.buttonstatus = 'Deactivate Course';
+                $scope.isactive = 'Active';
+            }
+            else
+            {
+                $scope.buttonstatus = 'Activate Course';
+                $scope.isactive = 'Inactive';
+            }
         };
         $scope.back = function(){
             $location.path('/advisorView');
@@ -40,7 +79,7 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
         $scope.allCourses = function(){
             //$location.path('/advisorView');
         };
-        $scope.addCourse = function(){
+        $scope.addCourse = function(){ 
             $location.path('/advisorView/courses/add');
         };
  
