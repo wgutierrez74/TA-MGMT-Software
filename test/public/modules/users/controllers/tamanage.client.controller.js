@@ -3,7 +3,7 @@
 angular.module('users').controller('TAManageController', ['$scope', '$http', '$location', 'Authentication', 'Users', 'courseservice',
 	function($scope, $http, $location, Authentication, Users, courseservice) {
         $scope.authentication = Authentication;
-        
+        var courseChosen;
         if($scope.authentication.user.faculty){
             var t = {
             'courseN': '' 
@@ -11,8 +11,8 @@ angular.module('users').controller('TAManageController', ['$scope', '$http', '$l
             t.courseN = courseservice.getProducts();
             courseservice.addProduct(t.courseN);
             $http.post('/courseTAS', t).success(function(data, status, headers, config){
-                $scope.courseS = data
-                var courseChosen = data;
+                $scope.courseS = data;
+                courseChosen = data;
             }).error(function(data, status, headers, config){
                // $scope.error = status;
             });
