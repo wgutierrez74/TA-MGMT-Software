@@ -2,7 +2,7 @@
   <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
   <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
         <div class="container">
-          <h2><div align="center">Welcome/Title</div></h2>
+          <h2><div align="center">Applicant Info</div></h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
       </div>
     </div>
@@ -10,9 +10,7 @@
        <div class="container">
         <table>
             <p>
-              Yeah buddy. Please be right
               {{ta.displayName}}
-              {{yeah}}
             </p>
             <form name="userForm" class="signin form-horizontal" autocomplete="off">
             <fieldset>
@@ -52,25 +50,25 @@
               <div class="form-group">
                 <label for="course1">Course 1</label>
                 <div class="form-group">    
-                  <a href ng-click="viewCourse(ta)"> {{ta.course1}}</a href>
+                  <a href ng-click="viewCourse(ta, ta.course1)"> {{ta.course1}}</a href>
                   </div>
               </div>
               <div class="form-group">
                 <label for="course1">Course 2</label>
                 <div class="form-group">    
-                  <a href ng-click="viewCourse(ta)"> {{ta.course2}}</a href>
+                  <a href ng-click="viewCourse(ta, ta.course2)"> {{ta.course2}}</a href>
                   </div>
               </div>
               <div class="form-group">
                 <label for="course1">Course 3</label>
                 <div class="form-group">    
-                  <a href ng-click="viewCourse(ta)"> {{ta.course3}}</a href>
+                  <a href ng-click="viewCourse(ta, ta.course3)"> {{ta.course3}}</a href>
                   </div>
               </div>
               <div class="form-group">
                 <label for="course1">Course 4</label>
                 <div class="form-group">    
-                  <a href ng-click="viewCourse(ta)"> {{ta.course4}}</a href>
+                  <a href ng-click="viewCourse(ta, ta.course4)"> {{ta.course4}}</a href>
                   </div>
               </div>
             </div>
@@ -78,7 +76,7 @@
             </fieldset>
           </form>
         </table>
-        <button type="submit" ng-click="verify(ta);" >Verify credentials for {{ta.displayName}}</button>
+        <button type="submit" ng-click="verify(ta);" >{{taVerifyButton}}</button>
         <button type="submit" ng-click="back();"> Go back</button>
     </DIV>
   </DIV>

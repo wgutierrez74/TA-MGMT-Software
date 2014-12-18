@@ -5,34 +5,43 @@ angular.module('users').controller('ApplicantController', ['$scope', '$http', '$
         $scope.authentication = Authentication;
     	if($scope.authentication.user.admin){
             var t = {
-            'courseN': '',
-            'TAName': ''
+            'courseN': ''
             };
+            $scope.ta=null;
             $scope.courses = [];
             $scope.currentTA=myservice.get();
-            t.courseN = myservice.get();
+            $scope.taVerifyButton = 'Default';
+            t.courseN = $scope.currentTA.username;
             $http.post('/applicant', t).success(function(data, status, headers, config){
     		  $scope.ta = data;
+              if($scope.ta.verified===true)
+                $scope.taVerifyButton = $scope.ta.displayName + ' is verified';
+            else if($scope.ta.verified===false)
+                $scope.taVerifyButton = 'Verify credentials for ' + $scope.ta.displayName;
     	//khj
     	   }).error(function(data, status, headers, config){
     		$scope.error = status;
     	   });
+           /*if($scope.ta.verified===true)
+                $scope.taVerifyButton = $scope.ta.displayName + ' is verified';
+            else if($scope.ta.verified===false)
+                $scope.taVerifyButton = 'Verify credentials for ' + $scope.ta.displayName;*/
         }
         else{
             $location.path('/badPermission'); 
         }
 
-        $scope.viewCourse = function(TA)
+        $scope.viewCourse = function(TA, course)
         {
             //this.get('controllers.acoursecontroller').courseInfo(courseName);
             //myservice.set(TA);
             //t.TAName = myservice.get;
             $http.get('/populateAllCourses').success(function(data, status, headers, config){
               $scope.courses=data;
-              for(var i=0; i<10; i++)
+              for(var i=0; i<data.length; i++)
                 {
                     console.log(i);
-                    if($scope.courses[i].courseName===TA.course1)
+                    if($scope.courses[i].courseName===course)
                     {
                         myservice.set($scope.courses[i]);
                         $location.path('/advisorView/courses');

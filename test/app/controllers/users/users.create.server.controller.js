@@ -118,11 +118,30 @@ exports.populateSpecificCourse = function(req, res) {
 	
 };
 
+
+exports.courseApplicants = function(req, res) {
+	var name = req.body.courseName;
+	console.log(name);
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	User.find({student: true, $or:[ { course1: name }, { course2: name }, {course3: name}, {course4: name} ]}, 'displayName username', twisted(res));
+};
+
 exports.coursePopulate = function(req, res) {
 	var name = req.body.courseN;
 	console.log(name);
 	console.log(req.body);
-	//console.log(req);
+	console.log(req);
 	var twisted = function(res){
         return function(err, data){
             if (err){

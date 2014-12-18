@@ -37,6 +37,7 @@ module.exports = function(app) {
 	app.route('/createFaculty').post(users.createFaculty);
 	app.route('/applicant').post(users.applicantInfo);
 	app.route('/courseTAList').post(users.coursePopulate);
+	app.route('/courseApplicants').post(users.courseApplicants);
 	app.route('/addCourse').post(users.addCourse);
 	
 	app.route('/verifyApplicant').post(users.verifyUser);

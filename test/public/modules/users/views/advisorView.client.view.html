@@ -92,7 +92,7 @@
                   <tr ng-repeat="course in courseList | filter:nameFilter">
                     <td>{{$index + 1}}</td> 
                     <td>     
-                      <a href ng-click="courseInfo(course);">{{course.courseName}}</a href>
+                      <a href ng-click="changeView();courseInfo(course);">{{course.courseName}}</a href>
                     </td>
                     <td>     {{course.instructor}}
                     </td>
@@ -118,7 +118,7 @@
                   <tr ng-repeat="ta in applicantList | filter:nameFilter">
                     <td>{{$index + 1}}</td>
                     <td>     
-                      <a href ng-click="userInfo(ta.username)">{{ta.displayName}}</a href>
+                      <a href ng-click="userInfo(ta); ">{{ta.displayName}}</a href>
                         {{ta.gpa}}&nbsp;
                     </td>
                     <td>{{ta.recommended}}</td>

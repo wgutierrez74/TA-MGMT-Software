@@ -4,7 +4,9 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
 	function($scope, $http, $location, Authentication, myservice) {
         $scope.authentication = Authentication;
     	if($scope.authentication.user.admin){
+            $scope.TAName ='Default';
             $scope.courseList = [];
+            $scope.TAList=[];
     	    $scope.nameFilter = null;
             $scope.currentCourse = null;
             $scope.isactive = 'Default';
@@ -12,9 +14,12 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
             $scope.coursesshown = 'Active Courses';
 
             var cc = {
-                'currentCourse': null
+                'currentCourse': null,
+                'courseN': ''
             };
             $scope.currentCourse=myservice.get();
+            cc.currentCourse = $scope.currentCourse;
+            cc.courseN = $scope.currentCourse.courseName;
             if($scope.currentCourse.active===true)
             {
                 $scope.isactive = 'Active';
@@ -30,11 +35,24 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
     	    }).error(function(data, status, headers, config){
     		      $scope.error = status;
     	    });
+            $http.post('/courseApplicants', $scope.currentCourse).success(function(data, status, headers, config){
+                $scope.TAList = data;
+                $scope.TAName = 'Success';//s$scope.TAList[0].displayName;
+            }).error(function(data, status, headers, config){
+                  $scope.error = status;
+                  $scope.TAName = 'Failed';
+            });
         }
         else{
             $location.path('/badPermission');
         }
  
+        $scope.taView = function(TA)
+        {
+            myservice.set(TA);
+            $location.path('/advisorView/applicants/ta');
+        };
+
         $scope.updateCourseStatus = function(course)
         {
             if($scope.currentCourse.active===true)
@@ -82,10 +100,18 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
             }
         };
 
-        $scope.courseInfo = function(course){
+        $scope.changeView = function()
+        {
             $location.path('/advisorView/courses');
-                myservice.set(course);
-                $scope.currentCourse = course;
+        };
+
+        $scope.courseInfo = function(course){
+            
+            myservice.set(course);
+            $scope.currentCourse = course;
+            $scope.TAName = 'Clicked';
+
+            
             
         };
 
@@ -104,7 +130,14 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
                 $scope.activatebutton = 'Activate Course';
                 $scope.isactive = 'Inactive';
             }
-            $location.path('/advisorView/courses');
+            $http.post('/courseApplicants', $scope.currentCourse).success(function(data, status, headers, config){
+                $scope.TAList = data;
+                $scope.TAName = 'Success';//s$scope.TAList[0].displayName;
+            }).error(function(data, status, headers, config){
+                  $scope.error = status;
+                  $scope.TAName = 'Failed';
+            });
+            //$location.path('/advisorView/courses');
         };
 
         $scope.back = function(){

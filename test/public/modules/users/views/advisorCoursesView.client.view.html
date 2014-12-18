@@ -15,8 +15,11 @@
             <br>
           </td>
           <tr><th colspan="4">TA Applicants</th></tr>
-          <td>Applied TA
-          </td>
+           <tr ng-repeat="user in TAList">
+              <td>     
+                 <a href ng-click="taView(user)"> {{user.displayName}}</a href>
+              </td>
+            </tr>
         </thead>
     </table>
   </div>
