@@ -25,8 +25,12 @@ module.exports = function(app) {
 	app.route('/auth/signout').get(users.signout);
 
 	app.route('/populate').get(users.populate);
+	app.route('/populateVerified').get(users.populateVerified);
+	app.route('/populateSpecificCourse').get(users.populateSpecificCourse);
+	app.route('/populateAll').get(users.populateAll);
 	app.route('/populateActiveCourses').get(users.populateCourses);
 	app.route('/populateAllCourses').get(users.populateAllCourses);
+	app.route('/populateInactiveCourses').get(users.populateInactiveCourses);
 	app.route('/deactivateCourse').post(users.deactivateCourse);
 	app.route('/activateCourse').post(users.activateCourse);
 	app.route('/createAdmin').post(users.createAdmin);

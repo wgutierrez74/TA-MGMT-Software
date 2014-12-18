@@ -5,7 +5,7 @@
       <h2><div align="center">{{currentCourse.courseName}}
     </div></h2>
     <table>
-        <button type="submit" ng-click="updateCourseStatus(currentCourse); updatePage(currentCourse)"> {{buttonstatus}}</button>
+        <button type="submit" ng-click="updateCourseStatus(currentCourse); updatePage(currentCourse)"> {{activatebutton}}</button>
         <thead>
           <tr><th colspan="4">Status</th></tr>
           <td>{{isactive}}
@@ -23,9 +23,11 @@
 </div>
   <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
       <div class="container">
+        <button type="submit" ng-click="activeCourses();">All Active Courses</button>
         <button type="submit" ng-click="allCourses();">All Registered Courses</button>
+        <button type="submit" ng-click="inactiveCourses();">All Inactive Courses</button>
         <button type="submit" ng-click="addCourse();">Add Course</button><p> 
-              Active Courses
+              <td>{{coursesshown}}</td>
         <input type="text" ng-model="nameFilter" class="form-control" placeholder="Search..."/><p>
         <div class="well">
           <table>

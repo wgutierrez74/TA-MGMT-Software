@@ -79,10 +79,12 @@
           {{tab.content}}
         </tab>
         <tab heading="Courses"><p><p> 
-          <section ng-controller="ACourseController">           
-            <button type="submit" ng-click="allCourses();">All Registered Courses</button>
-            <button type="submit" ng-click="addCourse();">Add Course</button><p> 
-            Active Courses
+          <section ng-controller="ACourseController">
+              <button type="submit" ng-click="activeCourses();">All Active Courses</button>          
+              <button type="submit" ng-click="allCourses();">All Registered Courses</button>
+              <button type="submit" ng-click="inactiveCourses();">All Inactive Courses</button>
+              <button type="submit" ng-click="addCourse();">Add Course</button><p> 
+              <td>{{coursesshown}}</td>
            <input type="text" ng-model="nameFilter" class="form-control" placeholder="Search..."/><p>
            <div class="well">
               <table>
@@ -90,7 +92,7 @@
                   <tr ng-repeat="course in courseList | filter:nameFilter">
                     <td>{{$index + 1}}</td> 
                     <td>     
-                      <a href ng-click="courseInfo(course)">{{course.courseName}}</a href>
+                      <a href ng-click="courseInfo(course);">{{course.courseName}}</a href>
                     </td>
                     <td>     {{course.instructor}}
                     </td>
@@ -104,10 +106,12 @@
           {{tab.content}}
         </tab>
         <tab heading="TA Applicants"><p><p>
-          <section ng-controller="PopulateController">              
-            <p>
-            <input type="text" ng-model="nameFilter" class="form-control" placeholder="Search..."/><p>   
-             Unverified Applicants<p>           
+          <section ng-controller="PopulateController">
+            <button type="submit" ng-click="unverifiedApplicants();">Unverified Applicants</button>  
+            <button type="submit" ng-click="verifiedApplicants();">Verified Applicants</button> 
+            <button type="submit" ng-click="allApplicants();">All Applicants</button>              
+            <p> {{applicantsShown}}  
+            <input type="text" ng-model="nameFilter" class="form-control" placeholder="Search..."/>        
             <div class="well">
               <table>
                 <tbody>

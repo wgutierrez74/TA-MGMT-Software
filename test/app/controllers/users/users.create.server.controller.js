@@ -97,6 +97,26 @@ exports.applicantInfo = function(req, res) {
 	
 };
 
+exports.populateSpecificCourse = function(req, res) {
+	var user = req.body;
+	var cn = user.course1;
+	console.log(req.body.TAName);
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	//Course.findOne({courseName : cn});
+	Course.findOne({courseName : cn}).exec(twisted(res));
+	
+};
 
 exports.coursePopulate = function(req, res) {
 	var name = req.body.courseN;
@@ -210,6 +230,40 @@ exports.populate = function(req, res) {
 	
 };
 
+exports.populateAll = function(req, res) {
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	User.find({student: true}, 'displayName username gpa', twisted(res));
+	
+};
+
+exports.populateVerified = function(req, res) {
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	User.find({verified: true, student: true}, 'displayName username gpa', twisted(res));
+	
+};
+
 
 exports.populateCourses = function(req, res) {
 	var twisted = function(res){
@@ -224,7 +278,7 @@ exports.populateCourses = function(req, res) {
         };
     };
 
-	Course.find({active: true}, 'courseName instructor', twisted(res));
+	Course.find({active: true}, 'courseName instructor active', twisted(res));
 	
 };
 
@@ -241,7 +295,23 @@ exports.populateAllCourses = function(req, res) {
         };
     };
 
-	Course.find({}, 'courseName instructor', twisted(res));	
+	Course.find( 'courseName instructor active', twisted(res));	
+};
+
+exports.populateInactiveCourses = function(req, res) {
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	Course.find({active: false}, 'courseName instructor active', twisted(res));	
 };
 
 exports.deactivateCourse = function(req, res) {

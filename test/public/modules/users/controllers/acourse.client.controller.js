@@ -7,18 +7,25 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
             $scope.courseList = [];
     	    $scope.nameFilter = null;
             $scope.currentCourse = null;
+            $scope.isactive = 'Default';
+            $scope.activatebutton = 'Default';
+            $scope.coursesshown = 'Active Courses';
+
+            var cc = {
+                'currentCourse': null
+            };
             $scope.currentCourse=myservice.get();
             if($scope.currentCourse.active===true)
             {
                 $scope.isactive = 'Active';
-                $scope.buttonstatus ='Deactivate Course';
+                $scope.activatebutton ='Deactivate Course';
             }
             else
             {
                 $scope.isactive = 'Inactive';
-                $scope.buttonstatus ='Activate Course';
+                $scope.activatebutton ='Activate Course';
             }
-            $http.get('/populateAllCourses').success(function(data, status, headers, config){
+            $http.get('/populateActiveCourses').success(function(data, status, headers, config){
                 $scope.courseList = data;
     	    }).error(function(data, status, headers, config){
     		      $scope.error = status;
@@ -48,37 +55,89 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
                     $scope.error = response.message;
                 });
                 $scope.currentCourse.active=true;
-            }   
+            }
+            if($scope.coursesshown==='Active Courses')    
+            {
+                $http.get('/populateActiveCourses').success(function(data, status, headers, config){
+                    $scope.courseList = data;
+                }).error(function(data, status, headers, config){
+                      $scope.error = status;
+                });
+            }
+            else if($scope.coursesshown==='All Courses')
+            {
+                $http.get('/populateAllCourses').success(function(data, status, headers, config){
+                    $scope.courseList = data;
+                }).error(function(data, status, headers, config){
+                    $scope.error = status;
+                });
+            }
+            else if($scope.coursesshown==='Inactive Courses')
+            {
+                $http.get('/populateInactiveCourses').success(function(data, status, headers, config){
+                    $scope.courseList = data;
+                }).error(function(data, status, headers, config){
+                    $scope.error = status;
+                });
+            }
         };
 
         $scope.courseInfo = function(course){
-            myservice.set(course);
-            $scope.currentCourse = course;
             $location.path('/advisorView/courses');
+                myservice.set(course);
+                $scope.currentCourse = course;
+            
         };
 
         //Does not properly reflect course status until updateCourseStatus is called
         //Needs to be fixed
         $scope.updatePage = function(course){
-            myservice.set(course);
-            $scope.currentCourse=myservice.get();//=course;
+            $scope.currentCourse=course;
+            cc.currentCourse = myservice.get();
             if($scope.currentCourse.active===true)
             {
-                $scope.buttonstatus = 'Deactivate Course';
+                $scope.activatebutton = 'Deactivate Course';
                 $scope.isactive = 'Active';
             }
             else
             {
-                $scope.buttonstatus = 'Activate Course';
+                $scope.activatebutton = 'Activate Course';
                 $scope.isactive = 'Inactive';
             }
+            $location.path('/advisorView/courses');
         };
+
         $scope.back = function(){
             $location.path('/advisorView');
         };
+
         $scope.allCourses = function(){
-            //$location.path('/advisorView');
+            $scope.coursesshown = 'All Courses';
+            $http.get('/populateAllCourses').success(function(data, status, headers, config){
+                $scope.courseList = data;
+            }).error(function(data, status, headers, config){
+                  $scope.error = status;
+            });
         };
+
+        $scope.activeCourses = function(){
+            $scope.coursesshown = 'Active Courses';
+            $http.get('/populateActiveCourses').success(function(data, status, headers, config){
+                $scope.courseList = data;
+            }).error(function(data, status, headers, config){
+                  $scope.error = status;
+            });
+        };
+
+        $scope.inactiveCourses = function() {
+            $scope.coursesshown = 'Inactive Courses';
+            $http.get('/populateInactiveCourses').success(function(data, status, headers, config){
+                $scope.courseList = data;
+            }).error(function(data, status, headers, config){
+                  $scope.error = status;
+            });
+        };
+
         $scope.addCourse = function(){ 
             $location.path('/advisorView/courses/add');
         };
