@@ -90,6 +90,10 @@ angular.module('users').config(['$stateProvider',
 			url: '/advisorView/applicants/ta' ,
 			templateUrl: 'modules/users/views/applicantView.client.view.html'
 		}).
+		state('advisorView-faculty', {
+			url: '/advisorView/faculty',
+			templateUrl: 'modules/users/views/advisorFacultyView.client.view.html'
+		}).
 		state('badPermission', {
 			url: '/badPermission' ,
 			templateUrl: 'modules/users/views/badPermission.client.view.html'

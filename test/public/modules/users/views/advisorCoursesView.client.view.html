@@ -11,7 +11,7 @@
           <td>{{isactive}}
           </td>
           <tr><th colspan="4">Instructor</th></tr>
-          <td>{{currentCourse.instructor}}
+          <td><a href ng-click="facultyView(currentCourse.instructor)">{{currentCourse.instructor}}</a href>
             <br>
           </td>
           <tr><th colspan="4">TA Applicants</th></tr>

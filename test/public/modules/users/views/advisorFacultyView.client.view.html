@@ -1,0 +1,37 @@
+<section ng-controller="AFacultyController">
+  <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+  <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+        <div class="container">
+          <h2><div align="center">Faculty Info: {{currentFaculty}}</div></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
+      </div>
+    </div>
+    <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
+       <div class="container">
+        <table>
+            <p>
+              Courses
+            </p>
+            <form name="userForm" class="signin form-horizontal" autocomplete="off">
+            <fieldset>
+
+              <table>
+                <tbody>
+                  <tr ng-repeat="course in courses | filter:nameFilter">
+                    <td>{{$index + 1}}</td> 
+                    <td>     
+                      <a href ng-click="updatePage(course);"> {{course.courseName}}</a href>
+                    </td>
+                    <td>     {{course.instructor}} 
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </fieldset>
+          </form>
+        </table>
+        <button type="submit" ng-click="back();"> Go back</button>
+    </DIV>
+  </DIV>
+</section>

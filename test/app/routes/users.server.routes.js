@@ -43,15 +43,19 @@ module.exports = function(app) {
 	app.route('/verifyApplicant').post(users.verifyUser);
 	app.route('/removeCourse').post(users.removeCourse);
 	app.route('/instructorCoursePopulate').post(users.instructorCourses);
+	app.route('/instructorCoursesNA').post(users.instructorCoursesNA);
+	app.route('/inactiveInstructorCourses').post(users.inactiveInstructorCourses);
 	app.route('/recommendTA').post(users.recommendTA);
+	app.route('/unrecommendTA').post(users.unrecommendTA);
 	app.route('/uploadResume').post(users.uploadResume);
 	app.route('/allApplicants').get(users.allApplicants);
 	app.route('/courseTAS').post(users.courseTAS);
 	app.route('/create').get(users.creation);
 	app.route('/removeChosen').post(users.removeChosen);
-
+	app.route('/facultyInfo').post(users.facultyInfo);
 	
 
 	// Finish by binding the user middleware
 	app.param('userId', users.userByID);
 };
+ 

@@ -97,6 +97,24 @@ exports.applicantInfo = function(req, res) {
 	
 };
 
+exports.facultyInfo = function(req, res) {
+	var name = req.body.facultyName;
+	console.log(name);
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            //console.log(data);
+            res.jsonp(data);
+           
+         };
+    };
+
+	User.findOne({displayName : name, faculty : true}).exec(twisted(res));
+};
+
 exports.populateSpecificCourse = function(req, res) {
 	var user = req.body;
 	var cn = user.course1;
@@ -245,7 +263,7 @@ exports.populate = function(req, res) {
         };
     };
 
-	User.find({verified: false, student: true}, 'displayName username gpa', twisted(res));
+	User.find({verified: false, student: true, faculty: false, admin: false}, 'displayName username gpa', twisted(res));
 	
 };
 
@@ -262,7 +280,7 @@ exports.populateAll = function(req, res) {
         };
     };
 
-	User.find({student: true}, 'displayName username gpa', twisted(res));
+	User.find({student: true, faculty: false, admin: false}, 'displayName username gpa', twisted(res));
 	
 };
 
@@ -367,6 +385,45 @@ exports.instructorCourses = function(req, res) {
     };
 
 	Course.find({active: true, instructor: instructor}, 'courseName', twisted(res));
+	
+};
+
+//finds courses for instructor even without a User for that instructor
+exports.instructorCoursesNA = function(req, res) {
+	var instructorName = req.body.facultyName;
+	console.log(instructorName);
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	Course.find({instructor: instructorName}, 'courseName', twisted(res));
+};
+
+exports.inactiveInstructorCourses = function(req, res) {
+	console.log(req.user);
+	console.log(req.body);
+	var instructor = req.user.displayName;
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data); 
+           
+        };
+    };
+
+	Course.find({active: false, instructor: instructor}, 'courseName', twisted(res));
 	
 };
 
@@ -754,7 +811,7 @@ exports.allApplicants = function(req, res) {
         };
     };
 
-	User.find({student : true}).exec(twisted(res));
+	User.find({student : true, faculty: false, admin: false}).exec(twisted(res));
 	
 };
 

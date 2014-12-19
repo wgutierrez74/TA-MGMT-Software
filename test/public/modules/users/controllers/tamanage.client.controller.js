@@ -8,10 +8,12 @@ angular.module('users').controller('TAManageController', ['$scope', '$http', '$l
             var t = {
             'courseN': '' 
             };
+            var courseChosen = null;
             t.courseN = courseservice.getProducts();
+            $scope.currentCourse = t.courseN;
             courseservice.addProduct(t.courseN);
             $http.post('/courseTAS', t).success(function(data, status, headers, config){
-                $scope.courseS = data
+                $scope.courseS = data;
                 var courseChosen = data;
             }).error(function(data, status, headers, config){
                // $scope.error = status;
@@ -27,6 +29,10 @@ angular.module('users').controller('TAManageController', ['$scope', '$http', '$l
 
         $scope.userInfo = function(name){
             //Show more info on same page about particular user 
+        };
+
+        $scope.viewProfile = function(TA) {
+
         };
 
         $scope.removeTA = function(TAUName, pos){

@@ -2,27 +2,27 @@
   <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
   <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
         <div class="container">
-          <h2>Welcome, {{user.displayName}}</div></h2>
+          <h2>Welcome, {{currentFaculty.displayName}}</div></h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in lacinia tortor. Nullam id quam consectetur, scelerisque felis a, euismod orci. Curabitur at dictum nulla, et efficitur tortor. Suspendisse posuere elit non volutpat porttitor. In finibus efficitur cursus. Donec porta ullamcorper porta. Suspendisse condimentum tincidunt neque, vel ullamcorper lacus.</p>
       </div>
     </div>
     <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
        <div class="container">
-    <table>
-    <thead>
-      <tr><th colspan="4"><h3>Active Courses</h3></th></tr>
-    </thead>
-      <tbody>
-      <tr ng-repeat="course in courseList | filter:nameFilter">
-        <td>{{$index + 1}}</td>
-        <td>     
-          <a href ng-click="courseApplicants(course.courseName)">{{course.courseName}}</a href>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-    <p> {{yeah}}
-     </p> 
+        <button type="submit" ng-click="activeCourses();">All Active Courses</button>
+        <button type="submit" ng-click="inactiveCourses();">All Inactive Courses</button><p> 
+        <table>
+        <thead>
+          <tr><th colspan="4"><h3>{{coursesViewed}}</h3></th></tr>
+        </thead>
+          <tbody>
+          <tr ng-repeat="course in courseList | filter:nameFilter">
+            <td>{{$index + 1}}</td>
+            <td>     
+              <a href ng-click="courseApplicants(course.courseName)">{{course.courseName}}</a href>
+            </td>
+          </tr>
+        </tbody>
+      </table>
   </div>
 </div>
 </section>

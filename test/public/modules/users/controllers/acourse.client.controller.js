@@ -7,7 +7,7 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
             $scope.TAName ='Default';
             $scope.courseList = [];
             $scope.TAList=[];
-    	    $scope.nameFilter = null;
+    	    $scope.nameFilter = null; 
             $scope.currentCourse = null;
             $scope.isactive = 'Default';
             $scope.activatebutton = 'Default';
@@ -51,6 +51,12 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
         {
             myservice.set(TA);
             $location.path('/advisorView/applicants/ta');
+        };
+
+        $scope.facultyView = function(instructor)
+        {
+            myservice.set(instructor);
+            $location.path('advisorView/faculty');
         };
 
         $scope.updateCourseStatus = function(course)

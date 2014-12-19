@@ -4,5 +4,5 @@ TA-MGMT-Software
 1. William Gutierrez - wgutierrez
 2. Amanda McVey      - amandasmcvey
 3. Patrick Scanlan   - patrick0392
-4.
+4. Brian Foster		 - brnguitar101
 5.

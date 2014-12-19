@@ -8,11 +8,26 @@ angular.module('users').controller('CApplicantController', ['$scope','$http', '$
         };
         if($scope.authentication.user.faculty){
             var w = {
-            'courseN': '' 
+            'courseN': ''  
             };
             $scope.t.courseN = myservice.get();
+            $scope.courseName = courseservice.getProducts();
+            $scope.recommended = false;
             $http.post('/applicant', $scope.t).success(function(data, status, headers, config){
     		  $scope.ta = data;
+              //$scope.recommended = data.recommended;
+              for(var i=0; i<data.recommended.length; i++)
+            {
+                if(data.recommended[i]===$scope.courseName)
+                {
+                    $scope.recommended = true;
+                    $scope.recommendButton = 'Unrecommend ' +$scope.ta.displayName + ' for ' + $scope.courseName;
+                }
+            }
+            if($scope.recommended===false)
+                $scope.recommendButton = 'Recommend ' + $scope.ta.displayName + ' for ' + $scope.courseName;
+
+
     	//khj
     	   }).error(function(data, status, headers, config){
     		$scope.error = status;
@@ -31,7 +46,7 @@ angular.module('users').controller('CApplicantController', ['$scope','$http', '$
             var w = {
                 'courseN': '' ,
                 'Name' : '',
-                'TAUname' : '',
+                'TAUname' : '', 
                 'research' : '',
                 'gpa' : ''
             };
@@ -40,12 +55,14 @@ angular.module('users').controller('CApplicantController', ['$scope','$http', '$
             w.TAUName = $scope.ta.username;
             w.research = $scope.ta.researchField;
             w.gpa = $scope.ta.gpa;
-            $http.post('/recommendTA', w).success(function(data, status, headers, config){
-              $scope.success = 'TA ' + $scope.ta.displayname + ' is recommended for ' + courseservice.getProducts();
-        
-           }).error(function(response){
-                $scope.error = response;
-           });
+            if($scope.recommended===false)
+            {
+                $http.post('/recommendTA', w).success(function(data, status, headers, config){
+                    $scope.success = 'TA ' + $scope.ta.displayname + ' is recommended for ' + courseservice.getProducts();
+                }).error(function(response){
+                    $scope.error = response;
+                });
+            }
 
            
         };
