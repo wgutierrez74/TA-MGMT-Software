@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('users').controller('TAManageController', ['$scope', '$http', '$location', 'Authentication', 'Users', 'courseservice',
-	function($scope, $http, $location, Authentication, Users, courseservice) {
+angular.module('users').controller('TAManageController', ['$scope', '$http', '$location', 'Authentication', 'Users', 'courseservice', 'myservice',
+	function($scope, $http, $location, Authentication, Users, courseservice, myservice) {
         $scope.authentication = Authentication;
         
         if($scope.authentication.user.faculty){
-            var t = {
+            var t = { 
             'courseN': '' 
             };
             var courseChosen = null;
@@ -32,7 +32,8 @@ angular.module('users').controller('TAManageController', ['$scope', '$http', '$l
         };
 
         $scope.viewProfile = function(TA) {
-
+            myservice.set(TA);
+            $location.path('/faculty/course/applicant');
         };
 
         $scope.removeTA = function(TAUName, pos){

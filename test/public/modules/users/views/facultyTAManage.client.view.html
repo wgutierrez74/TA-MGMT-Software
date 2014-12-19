@@ -14,7 +14,7 @@
                 <tbody>
                   <tr ng-repeat="ta in courseS.recommended track by $index">     
                     <td>    
-                      {{ta}}&nbsp;{{courseChosen.recommendedGPA[$index]}}&nbsp;{{courseChosen.recommendedResearch[$index]}}&nbsp;&nbsp; <a href ng-click="userInfo($index)">More Info</a href>&nbsp;<a href ng-click="removeTA($index)">Remove</a href>
+                      <a href ng-click="viewProfile(ta)">{{ta}}</a href>&nbsp;{{courseChosen.recommendedGPA[$index]}}&nbsp;{{courseChosen.recommendedResearch[$index]}}&nbsp;&nbsp; <a href ng-click="userInfo($index)">More Info</a href>&nbsp;<a href ng-click="removeTA($index)">Remove</a href>
                     </td>
                   </tr>
                 </tbody>
