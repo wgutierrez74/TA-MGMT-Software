@@ -7,13 +7,12 @@ angular.module('users').controller('AFacultyController', ['$scope', '$http', '$l
             var t = {
             'facultyName': ''
             };
-            $scope.message = 'test';
+            $scope.coursesShown = 'Active Courses';
             $scope.courses = [];
             $scope.currentFaculty=myservice.get();
             t.facultyName = myservice.get();
-            $http.post('/instructorCoursesNA', t).success(function(data, status, headers, config){
+            $http.post('/instructorCoursesActiveNA', t).success(function(data, status, headers, config){
     		  $scope.courses = data;
-              $scope.message='This worked';
     	   }).error(function(data, status, headers, config){
     		$scope.error = status;
     	   });
@@ -22,29 +21,37 @@ angular.module('users').controller('AFacultyController', ['$scope', '$http', '$l
             $location.path('/badPermission'); 
         } 
 
-        $scope.viewCourse = function(TA, course) 
+        $scope.viewCourse = function(course) 
         {
-            //this.get('controllers.acoursecontroller').courseInfo(courseName);
-            //myservice.set(TA);
-            //t.TAName = myservice.get;
-            $http.get('/populateAllCourses').success(function(data, status, headers, config){
-              $scope.courses=data;
-              for(var i=0; i<data.length; i++)
-                {
-                    console.log(i);
-                    if($scope.courses[i].courseName===course)
-                    {
-                        myservice.set($scope.courses[i]);
-                        $location.path('/advisorView/courses');
-                    }
-                }
-                //$location.path('/badPermission');
-           }).error(function(data, status, headers, config){
-            $location.path('/badPermission');
-            $scope.error = status;
-           });
+            myservice.set(course);
+            $location.path('/advisorView/courses');
+        };
 
-            
+        $scope.allCourses = function(){
+            $scope.coursesShown = 'All Courses';
+            $http.post('/instructorCoursesNA', t).success(function(data, status, headers, config){
+                $scope.courses = data;
+            }).error(function(data, status, headers, config){
+                  $scope.error = status;
+            });
+        };
+
+        $scope.activeCourses = function(){
+            $scope.coursesShown = 'Active Courses';
+            $http.post('/instructorCoursesActiveNA', t).success(function(data, status, headers, config){
+                $scope.courses = data;
+            }).error(function(data, status, headers, config){
+                  $scope.error = status;
+            });
+        };
+
+        $scope.inactiveCourses = function() {
+            $scope.coursesShown = 'Inactive Courses';
+            $http.post('/instructorCoursesInactiveNA', t).success(function(data, status, headers, config){
+                $scope.courses = data;
+            }).error(function(data, status, headers, config){
+                  $scope.error = status;
+            });
         };
 
         $scope.back = function(){

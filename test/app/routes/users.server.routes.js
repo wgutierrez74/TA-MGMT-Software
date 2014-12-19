@@ -44,6 +44,8 @@ module.exports = function(app) {
 	app.route('/removeCourse').post(users.removeCourse);
 	app.route('/instructorCoursePopulate').post(users.instructorCourses);
 	app.route('/instructorCoursesNA').post(users.instructorCoursesNA);
+	app.route('/instructorCoursesInactiveNA').post(users.instructorCoursesInactiveNA);
+	app.route('/instructorCoursesActiveNA').post(users.instructorCoursesActiveNA);
 	app.route('/inactiveInstructorCourses').post(users.inactiveInstructorCourses);
 	app.route('/recommendTA').post(users.recommendTA);
 	app.route('/unrecommendTA').post(users.unrecommendTA);

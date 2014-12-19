@@ -8,29 +8,32 @@
     </div>
     <div class="jumbotron" style="width:800px; margin: 0 auto; margin: 20px auto;">
        <div class="container">
-        <table>
-            <p>
-              Courses
-            </p>
             <form name="userForm" class="signin form-horizontal" autocomplete="off">
             <fieldset>
-
+              <button type="submit" ng-click="activeCourses();">All Active Courses</button>          
+              <button type="submit" ng-click="allCourses();">All Registered Courses</button>
+              <button type="submit" ng-click="inactiveCourses();">All Inactive Courses</button>
+              <p> 
+              <td><p>{{coursesShown}}</p></td>
+           <input type="text" ng-model="nameFilter" class="form-control" placeholder="Search..."/><p>
+           <div class="well">
               <table>
                 <tbody>
                   <tr ng-repeat="course in courses | filter:nameFilter">
                     <td>{{$index + 1}}</td> 
                     <td>     
-                      <a href ng-click="updatePage(course);"> {{course.courseName}}</a href>
+                      <a href ng-click="viewCourse(course);">{{course.courseName}}</a href>
                     </td>
-                    <td>     {{course.instructor}} 
+                    <td>     {{course.instructor}}
                     </td>
                   </tr>
                 </tbody>
               </table>
+            </div>
 
             </fieldset>
           </form>
-        </table>
+
         <button type="submit" ng-click="back();"> Go back</button>
     </DIV>
   </DIV>

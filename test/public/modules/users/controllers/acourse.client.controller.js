@@ -4,22 +4,13 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
 	function($scope, $http, $location, Authentication, myservice) {
         $scope.authentication = Authentication;
     	if($scope.authentication.user.admin){
-            $scope.TAName ='Default';
             $scope.courseList = [];
             $scope.TAList=[];
     	    $scope.nameFilter = null; 
-            $scope.currentCourse = null;
             $scope.isactive = 'Default';
             $scope.activatebutton = 'Default';
             $scope.coursesshown = 'Active Courses';
-
-            var cc = {
-                'currentCourse': null,
-                'courseN': ''
-            };
             $scope.currentCourse=myservice.get();
-            cc.currentCourse = $scope.currentCourse;
-            cc.courseN = $scope.currentCourse.courseName;
             if($scope.currentCourse.active===true)
             {
                 $scope.isactive = 'Active';
@@ -37,10 +28,8 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
     	    });
             $http.post('/courseApplicants', $scope.currentCourse).success(function(data, status, headers, config){
                 $scope.TAList = data;
-                $scope.TAName = 'Success';//s$scope.TAList[0].displayName;
             }).error(function(data, status, headers, config){
                   $scope.error = status;
-                  $scope.TAName = 'Failed';
             });
         }
         else{
@@ -114,18 +103,13 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
         $scope.courseInfo = function(course){
             
             myservice.set(course);
-            $scope.currentCourse = course;
-            $scope.TAName = 'Clicked';
-
-            
-            
+            $scope.currentCourse = course;          
         };
 
         //Does not properly reflect course status until updateCourseStatus is called
         //Needs to be fixed
         $scope.updatePage = function(course){
             $scope.currentCourse=course;
-            cc.currentCourse = myservice.get();
             if($scope.currentCourse.active===true)
             {
                 $scope.activatebutton = 'Deactivate Course';
@@ -138,12 +122,9 @@ angular.module('users').controller('ACourseController', ['$scope', '$http', '$lo
             }
             $http.post('/courseApplicants', $scope.currentCourse).success(function(data, status, headers, config){
                 $scope.TAList = data;
-                $scope.TAName = 'Success';//s$scope.TAList[0].displayName;
             }).error(function(data, status, headers, config){
                   $scope.error = status;
-                  $scope.TAName = 'Failed';
             });
-            //$location.path('/advisorView/courses');
         };
 
         $scope.back = function(){

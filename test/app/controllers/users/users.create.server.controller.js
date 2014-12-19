@@ -384,7 +384,7 @@ exports.instructorCourses = function(req, res) {
         };
     };
 
-	Course.find({active: true, instructor: instructor}, 'courseName', twisted(res));
+	Course.find({active: true, instructor: instructor}, 'courseName instructor', twisted(res));
 	
 };
 
@@ -404,7 +404,43 @@ exports.instructorCoursesNA = function(req, res) {
         };
     };
 
-	Course.find({instructor: instructorName}, 'courseName', twisted(res));
+	Course.find({instructor: instructorName}, 'courseName instructor', twisted(res));
+};
+
+exports.instructorCoursesInactiveNA = function(req, res) {
+	var instructorName = req.body.facultyName;
+	console.log(instructorName);
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	Course.find({instructor: instructorName, active: false}, 'courseName instructor', twisted(res));
+};
+
+exports.instructorCoursesActiveNA = function(req, res) {
+	var instructorName = req.body.facultyName;
+	console.log(instructorName);
+	var twisted = function(res){
+        return function(err, data){
+            if (err){
+                console.log('error occured');
+                return;
+            }
+            console.log(data);
+            res.jsonp(data);
+           
+        };
+    };
+
+	Course.find({instructor: instructorName, active: true}, 'courseName instructor', twisted(res));
 };
 
 exports.inactiveInstructorCourses = function(req, res) {
